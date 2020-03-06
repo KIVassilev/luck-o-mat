@@ -1,5 +1,6 @@
 import loader from '../../utils/loader'
 import Button from '../../entities/Button'
+import Card from '../../entities/Card'
 import logoImg from '../../assets/logo.png'
 import { buttonSprite } from '../../assets/sprite'
 import { clickSound } from '../../assets/audio'
@@ -33,6 +34,8 @@ class SplashScreen extends Phaser.Scene {
 			clickSound.play()
 			this.scene.switch('Level1')
 		}, this)
+
+    let card = new Card(this, { x: 500, y: 10});
 
 		this.tweens.add({
 			targets: logo,
