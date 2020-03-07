@@ -10,14 +10,21 @@ class Hud extends Phaser.Scene {
     preload() { }
 
     create(data) {
-        let score = this.add.text(10, 10, 'Score: 0', { font: '48px Arial', fill: '#000000' })
+        let score = this.add.text(10, 10, '', { font: '48px Arial', fill: '#000000' })
 
         this.game.events.off('addScore');
 
         this.game.events.on('addScore', function(points) {
             this.score += points
+            let stars = []
+            let starsTxt = ''
+            stars.length = Math.floor(this.score / 150)
+            console.log(this.score)
+            for (let s = 0; s < stars.length; s++) {
+                starsTxt += '* '
+            }
 
-            score.setText('Score: ' + this.score)
+            score.setText(starsTxt)
         }, this)
     }
 
