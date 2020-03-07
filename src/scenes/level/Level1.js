@@ -88,6 +88,9 @@ class Level1 extends Phaser.Scene {
           }
           this.basket++;
           if (this.basket == this.baskets.length) {
+            for(i = 0; i < this.baskets.length; i++) {
+              this.input.setDraggable(this.baskets[i].item);
+            }
             this.hint.setText('GIVE THE ITEMS TO THE CHARS');
           } else {
             this.hint.setText('COLLECT THREE ITEMS');
