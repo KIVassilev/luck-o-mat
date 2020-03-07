@@ -44,7 +44,6 @@ class SplashScreen extends Phaser.Scene {
         })
   }
 
-
     update(time, delta) { }
 }
 
