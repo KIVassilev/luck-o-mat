@@ -3,7 +3,7 @@ import backgroundImg from '../../assets/background.png'
 import { babySprite } from '../../assets/sprite'
 import { clickSound } from '../../assets/audio'
 import Character from '../../entities/Character'
-import { getCurrentLevel } from '../../utils/helpers'
+import { getLevel } from '../../utils/helpers'
 import { CONFIG } from '../../utils/config'
 import Card from '../../entities/Card'
 import Board from '../../entities/Board'
@@ -13,6 +13,7 @@ class Level1 extends Phaser.Scene {
     constructor() {
         super('Level1')
         this.isLevel = true
+        this.level = getLevel()
     }
 
     init(data) { }
@@ -27,8 +28,7 @@ class Level1 extends Phaser.Scene {
     }
 
     create(data) {
-        const level = getCurrentLevel()
-        console.log(level)
+        console.log(this.level)
         
         this.scene.launch('Hud')
         this.scene.bringToTop('Hud')
@@ -39,21 +39,8 @@ class Level1 extends Phaser.Scene {
                 this.game.events.emit('addScore')
         }, this)
 
-        // TODO: Iterate trough all levels available
-        level.chars.forEach((charId, i) => {
-            const charSizeX = 250
-            const charSound = this.sound.add(`char-${charId}-happy`)
-            const Char = new Character({
-                scene: this,
-                key: `char-${charId}`,
-                x: 100 + (charSizeX * i),
-                y: 250
-            })
-    
-            Char.on('pointerup', function () {
-                charSound.play()
-            }, this)
-        })
+        // Spawn characters
+        this.createCharacters()
 
         this.createBoardAndCards(data)
     }
@@ -77,6 +64,23 @@ class Level1 extends Phaser.Scene {
         for (var i = 0; i < 3; i++) {
             this.cards[i] = new Card(this, { x: 1090, y: 60+i*200, map: maps[i], snap: snap})
         }
+    }
+
+    createCharacters () {
+        this.level.chars.forEach((charId, i) => {
+            const charSizeX = 250
+            const charSound = this.sound.add(`char-${charId}-happy`)
+            const Char = new Character({
+                scene: this,
+                key: `char-${charId}`,
+                x: 100 + (charSizeX * i),
+                y: 250
+            })
+    
+            Char.on('pointerup', function () {
+                charSound.play()
+            }, this)
+        })
     }
 
     update(time, delta) { }

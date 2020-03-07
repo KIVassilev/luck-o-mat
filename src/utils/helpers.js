@@ -75,7 +75,7 @@ function generateRandomLevel() {
     }
 }
 
-export function getCurrentLevel(index) {
+export function getLevel(index) {
     const levelIndex = index ? index : parseInt(localStorage.getItem('level-index'))
     let level = levelIndex >= 0 ? CONFIG.levels[levelIndex] : CONFIG.levels[0]
 
