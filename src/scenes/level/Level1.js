@@ -61,14 +61,14 @@ class Level1 extends Phaser.Scene {
             itemWidth: itemW,
             itemHeight: itemH
         }
-        var maps = [
-            [[1, 0], [0,1]],
-            [[1, 1], [0,1]],
-            [[0, 0], [0,1]]
-        ]
 
         for (var i = 0; i < 3; i++) {
-            this.cards[i] = new Card(this, { x: 1090, y: 60 + i * 200, map: maps[i], snap: snap })
+            this.cards[i] = new Card(this, { 
+                x: 1090, 
+                y: 60 + i * 200, 
+                map: this.level.cards[i], 
+                snap: snap 
+            })
         }
 
         this.hand = new Hand(this, { x: 100, y: 100});
