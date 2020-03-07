@@ -42,7 +42,6 @@ class Level1 extends Phaser.Scene {
 
     create(data) {
         console.log(this.level)
-        
 
         this.add.sprite(0, 0, 'background').setOrigin(0, 0)
         this.add.sprite(0, 0, 'machine').setOrigin(0, 0)
@@ -103,7 +102,7 @@ class Level1 extends Phaser.Scene {
           }
         }, this);
 
-        this.hint = this.add.text(80, 645, 'DRAG THE CARDS ON THE RIGHT', { font: '22px Arial', color: '#fff', stroke: '#000', strokeThickness: 4});
+        this.hint = this.add.text(70, 650, 'DRAG THE CARDS ON THE RIGHT', { font: '22px Arial', color: '#fff', stroke: '#000', strokeThickness: 4});
 
         const newButton = new Button({
             scene: this,
