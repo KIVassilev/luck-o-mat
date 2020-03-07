@@ -29,20 +29,7 @@ export const CONFIG = Object.freeze({
                 [0, 0, 0, 0, 0]
             ],
             chars: [0, 1, 2],
-            cards: [
-                [
-                    [1, 1],
-                    [1, 0]
-                ],
-                [
-                    [0, 1],
-                    [1, 0]
-                ],
-                [
-                    [0, 0],
-                    [1, 1]
-                ]
-            ]
+            cards: null
         }
     ],
     chars: [
