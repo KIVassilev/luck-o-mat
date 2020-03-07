@@ -7,7 +7,12 @@ const GAME = new Phaser.Game({
 	parent: 'phaser-example',
 	width: CONFIG.width,
 	height: CONFIG.height,
-	scene: Scenes
+	scene: Scenes,
+  scale: {
+    mode: Phaser.Scale.FIT,
+    width: CONFIG.width,
+    height: CONFIG.height
+  }
 })
 
 export default GAME

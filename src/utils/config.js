@@ -1,6 +1,6 @@
 export const CONFIG = Object.freeze({
-	width: 800,
-	height: 600,
+	width: 1280,
+	height: 720,
 	levels: [
 		{
 			id: 1,

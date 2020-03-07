@@ -1,6 +1,7 @@
 import loader from '../../utils/loader'
 import Button from '../../entities/Button'
 import Card from '../../entities/Card'
+import Board from '../../entities/Board'
 import logoImg from '../../assets/logo.png'
 import { buttonSprite } from '../../assets/sprite'
 import { clickSound } from '../../assets/audio'
@@ -20,7 +21,7 @@ class SplashScreen extends Phaser.Scene {
 		this.load.audio('click', clickSound)
 	}
 
-	create(data) {
+	create_old(data) {
 		const logo = this.add.image(400, 150, 'logo')
 		const clickSound = this.sound.add('click')
 		const playButton = new Button({
@@ -45,6 +46,14 @@ class SplashScreen extends Phaser.Scene {
 			yoyo: true,
 			loop: -1
 		})
+  }
+
+  create(data) {
+    let board = new Board(this, { x: 500, y: 200});
+    this.cards = [];
+    for (var i = 0; i < 3; i++) {
+      this.cards[i] = new Card(this, { x: 1000, y: 100+i*200});
+    }
 	}
 
 	update(time, delta) { }

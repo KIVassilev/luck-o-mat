@@ -13,15 +13,19 @@ class Card extends Phaser.GameObjects.Graphics {
       this.fillRect(0, x*(pad+itemHeight), w, pad);
       this.fillRect(x*(pad+itemWidth), 0, pad, h);
     }
-    this.width = 190;
-    this.height = 190;
+    this.width = w;
+    this.height = h;
+    this.anchorX = options.x;
+    this.anchorY = options.y;
     scene.add.existing(this);
     this.setInteractive();
     scene.input.on('drag', function (pointer, gameObject, dragX, dragY) {
-
-        gameObject.x = dragX;
-        gameObject.y = dragY;
-
+        gameObject.x = 80*((dragX/80)|0);
+        gameObject.y = 80*((dragY/80)|0);
+    });
+    scene.input.on('dragend', function (pointer, gameObject, dragX, dragY) {
+        gameObject.x = gameObject.anchorX;
+        gameObject.y = gameObject.anchorY;
     });
     scene.input.setDraggable(this);
   }
