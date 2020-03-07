@@ -24,11 +24,15 @@ class Hand extends Phaser.GameObjects.Container {
     }
     
     dropOver(x) {
-        this.scene.tweens.add({
+        this.scene.tweens.timeline({
             targets: [this, this.item],
-            y: 100,
+            tweens: [
+              { y: 100 } ,
+              { x: x } ,
+            ],
             duration: 1000,
-            ease: 'Linear'
+            ease: 'Linear',
+            onComplete: this.onDrop.bind(this)
         });
     }
 
@@ -45,9 +49,13 @@ class Hand extends Phaser.GameObjects.Container {
         });
     }
 
+    onDrop(tween) {
+        this.hand.setFrame(0);
+    }
+
     onPick(tween) {
         this.dropOver(100);
-        tween.targets[0].hand.setFrame(2);
+        this.hand.setFrame(2);
     }
 }
 
