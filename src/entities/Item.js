@@ -1,5 +1,6 @@
 class Item extends Phaser.GameObjects.Sprite {
     constructor(config) {
+        console.log(config)
         super(config.scene, 0, 0, config.key, 0)
 
         this.x = config.x

@@ -21,11 +21,11 @@ function generateCharacters(count) {
 function generateBoard(sizeX, sizeY) {
     let board = []
 
-    // Cols
+    // Y
     for (let y = 0; y < sizeX; y++) {
         let rows = []
  
-        // Rows
+        // X
         for (let x = 0; x < sizeY; x++) {
             // TODO: make it not random xD
             rows.push(getRandomInt(0, CONFIG.itemsCount))
@@ -44,11 +44,11 @@ function generateCards(count, sizeX, sizeY) {
     for (let i = 0; i < count; i++) {
         let card = []
 
-        // Cols
+        // Y
         for (let y = 0; y < sizeX; y++) {
             let rows = []
 
-            // Rows
+            // X
             for (let x = 0; x < sizeY; x++) {
                 // TODO: make it not random xD
                 rows.push(getRandomInt(0, 1))

@@ -1,4 +1,5 @@
 import { CONFIG } from '../utils/config'
+import Item from './Item'
 
 class Board extends Phaser.GameObjects.Container {
     constructor(scene, options) {
@@ -11,16 +12,18 @@ class Board extends Phaser.GameObjects.Container {
         this.padding = CONFIG.boardSize.padding
         this.items = [];
 
-        for (var y = 0; y < CONFIG.boardSize.y; y++) {
+        // Y
+        for (let y = 0; y < scene.level.board.length; y++) {
             this.items[y] = [];
-            for (var x = 0; x < CONFIG.boardSize.x; x++) {
-                var sprite = scene.add.sprite(
-                    x * (itemWidth + this.padding), 
-                    y * (itemHeight + this.padding), 
-                    'items'
-                );
-                this.items[y][x] = sprite;
-                this.add(sprite);
+            for (var x = 0; x < scene.level.board[y].length; x++) {
+                const newItem = new Item({
+                    scene: scene,
+                    key: 'items',
+                    x: this.x + (x * (itemWidth + this.padding)),
+                    y: this.y + (y * (itemHeight + this.padding)),
+                    id: scene.level.board[y][x]
+                })
+                this.items[y][x] = newItem;
             }
         }
 
