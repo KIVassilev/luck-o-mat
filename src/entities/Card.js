@@ -32,7 +32,9 @@ class Card extends Phaser.GameObjects.Graphics {
 
         scene.add.existing(this);
         this.setInteractive();
+        this.scale = 0.8;
         scene.input.on('drag', function (pointer, gameObject, _x, _y) {
+            gameObject.scale = 1;
             var x = pointer.x;
             var y = pointer.y;
             if (gameObject.snap) {
@@ -52,6 +54,7 @@ class Card extends Phaser.GameObjects.Graphics {
         scene.input.on('dragend', function (pointer, gameObject, dragX, dragY) {
             gameObject.x = gameObject.anchorX;
             gameObject.y = gameObject.anchorY;
+            gameObject.scale = 0.8;
         });
         scene.input.setDraggable(this);
     }
