@@ -47,11 +47,11 @@ export default function (scene) {
         progressBar.clear()
         progressBar.fillStyle(0xffffff, 1)
         progressBar.fillRect(width / 2 - 150, height / 2 - 20, 300 * value, 30)
-    });
+    })
 
     scene.load.on('fileprogress', function (file) {
         assetText.setText('Loading asset: ' + file.key)
-    });
+    })
 
     scene.load.on('complete', function () {
         progressBar.destroy()
