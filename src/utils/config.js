@@ -1,13 +1,19 @@
 export const CONFIG = Object.freeze({
     width: 1280,
     height: 720,
-    gridSize: {
+    boardSize: {
         x: 5,
-        y: 5
+        y: 5,
+        padding: 14 // in pixels
     },
     cardSize: {
         x: 2,
         y: 2
+    },
+    item: {
+        width: 80, // in pixels
+        height: 80 // in pixels
+
     },
     itemsCount: 14,
     cardsCount: 3, // How many cards to generate

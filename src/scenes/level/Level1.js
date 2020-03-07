@@ -36,7 +36,7 @@ class Level1 extends Phaser.Scene {
         this.add.sprite(0, 0, 'background').setOrigin(0, 0)
 
         this.input.on('pointerup', function () {
-                this.game.events.emit('addScore')
+            this.game.events.emit('addScore')
         }, this)
 
         // Spawn characters
@@ -46,12 +46,12 @@ class Level1 extends Phaser.Scene {
     }
 
     createBoardAndCards(data) {
-        let board = new Board(this, { x: 630, y: 230})
+        let board = new Board(this, { x: 630, y: 230 })
         this.cards = []
-        var itemW = 80 + board.pad
-        var itemH = 80 + board.pad
+        var itemW = CONFIG.item.width + board.padding
+        var itemH = CONFIG.item.height + board.padding
         var snap = {
-            rect: new Phaser.Geom.Rectangle(630, 230, (CONFIG.gridSize.x-1)*itemW, (CONFIG.gridSize.y-1)*itemH),
+            rect: new Phaser.Geom.Rectangle(630, 230, (CONFIG.boardSize.x - 1) * itemW, (CONFIG.boardSize.y - 1) * itemH),
             itemWidth: itemW,
             itemHeight: itemH
         }
@@ -62,7 +62,7 @@ class Level1 extends Phaser.Scene {
         ]
 
         for (var i = 0; i < 3; i++) {
-            this.cards[i] = new Card(this, { x: 1090, y: 60+i*200, map: maps[i], snap: snap})
+            this.cards[i] = new Card(this, { x: 1090, y: 60 + i * 200, map: maps[i], snap: snap })
         }
     }
 
@@ -77,7 +77,7 @@ class Level1 extends Phaser.Scene {
                 y: 250
             })
     
-            Char.on('pointerup', function () {
+            Char.on('pointerup', function() {
                 charSound.play()
             }, this)
         })
