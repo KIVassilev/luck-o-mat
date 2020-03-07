@@ -1,5 +1,10 @@
 export const CONFIG = Object.freeze({
-
+	width: 1280,
+	height: 720,
+	gridSize: {
+		x: 6,
+		y: 6
+	},
 	levels: [
 		{
 			id: 1,
