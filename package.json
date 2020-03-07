@@ -1,7 +1,6 @@
 {
-	"name": "phaser3-demo",
+	"name": "Luck-o-mat 7777",
 	"version": "0.1.0",
-	"description": "A Phaser 3 Project Demo",
 	"main": "src/main.js",
 	"scripts": {
 		"build": "webpack --config webpack/prod.js ",
