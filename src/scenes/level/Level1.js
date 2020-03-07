@@ -56,8 +56,8 @@ class Level1 extends Phaser.Scene {
         this.baskets = [ { x: 100, y: 600 }, { x: 300, y: 600}, { x:500, y: 600}];
         this.board = new Board(this, { x: 630, y: 230 })
         this.cards = []
-        var itemW = CONFIG.item.width + this.board.padding
-        var itemH = CONFIG.item.height + this.board.padding
+        var itemW = CONFIG.item.width + this.board.padding;
+        var itemH = CONFIG.item.height + this.board.padding;
         var snap = {
             rect: new Phaser.Geom.Rectangle(630, 230, (CONFIG.boardSize.x - 1) * itemW, (CONFIG.boardSize.y - 1) * itemH),
             itemWidth: itemW,
@@ -79,7 +79,14 @@ class Level1 extends Phaser.Scene {
         }, this);
         this.events.on('pickBoardPos', (x, y, item) => {
           var i = this.board.items[y][x];
-          this.hand.pickBoardPos(i.x, i.y, i, this.baskets[this.basket++]);
+          this.baskets[this.basket].item = i;
+          this.board.items[y][x] = null;
+          if (i) {
+            this.hand.pickBoardPos(i.x, i.y, i, this.baskets[this.basket]);
+          } else {
+            this.hand.pickBoardPos(this.board.x+x*itemW, this.board.y + y*itemH, null, this.baskets[this.basket]);
+          }
+          this.basket++;
         }, this);
     }
 
