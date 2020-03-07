@@ -12,8 +12,8 @@ export const CONFIG = Object.freeze({
     },
     item: {
         width: 80, // in pixels
-        height: 80 // in pixels
-
+        height: 80, // in pixels
+        pointsPenalty: -30
     },
     itemsCount: 14,
     cardsCount: 3, // How many cards to generate
@@ -49,7 +49,7 @@ export const CONFIG = Object.freeze({
         { 
             id: 0, 
             name: "Kifla", 
-            items: [{ id: 3, pt: 100 }, { id: 3, pt: -50 }], 
+            items: [{ id: 0, pt: 100 }, { id: 1, pt: -50 }], 
             talk: { hi: "Hello", win: "That is great", lose: "You suck" } 
         },
         { id: 1, name: "Baba", items: [ { id: 3, pt: 100}, { id:3, pt: -50} ], talk: { hi: "Hello", win: "That is great", lose: "You suck" } },

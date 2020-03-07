@@ -41,10 +41,6 @@ class Level1 extends Phaser.Scene {
 
         this.add.sprite(0, 0, 'background').setOrigin(0, 0)
 
-        this.input.on('pointerup', function () {
-            this.game.events.emit('addScore')
-        }, this)
-
         // Spawn characters
         this.createCharacters()
 
@@ -112,7 +108,8 @@ class Level1 extends Phaser.Scene {
                 scene: this,
                 key: `char-${charId}`,
                 x: 15 + (charSizeX * i),
-                y: 50
+                y: 50,
+                id: charId
             })
             Char.on('pointerup', function() {
                 charSound.play()
