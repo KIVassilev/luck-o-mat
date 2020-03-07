@@ -1,4 +1,5 @@
 import { CONFIG } from '../utils/config'
+import { shuffleArray } from '../utils/helpers'
 
 class Card extends Phaser.GameObjects.Graphics {
     constructor(scene, options) {
@@ -8,19 +9,20 @@ class Card extends Phaser.GameObjects.Graphics {
         const pad = CONFIG.boardSize.padding;
         const w = pad * 3 + itemWidth * 2;
         const h = pad * 3 + itemHeight * 2;
+        this.map = options.map
         var x, y;
 
         this.fillStyle(0x555555, 1);
         
         for (x = 0; x < 3; x++) {
-            this.fillRect(0, x*(pad+itemHeight), w, pad);
-            this.fillRect(x*(pad+itemWidth), 0, pad, h);
+            this.fillRect(0, x * (pad + itemHeight), w, pad);
+            this.fillRect(x * (pad + itemWidth), 0, pad, h);
         }
         if (options.map) {
             this.fillStyle(0xff0000, 0.6);
             for (x = 0; x < 2; x++) {
                 for (y = 0; y < 2; y++) {
-                    if (options.map[x][y]) {
+                    if (options.map[y][x]) {
                         this.fillRect(pad+x*(itemWidth+pad), pad+y*(itemHeight+pad), itemWidth, itemHeight);
                     }
                 }
@@ -71,8 +73,23 @@ class Card extends Phaser.GameObjects.Graphics {
     rollSpot() {
         // const board = this.scene.board
         // console.log(board.items)
-        this.scene.events.emit('pickBoardPos', this.snap.pt.x, this.snap.pt.y);
-        this.destroy();
+        console.log(this.snap.pt)
+        console.log(this.map)
+        let slots = []
+        
+        for (let y = 0; y < this.map.length; y++) {
+            for (let x = 0; x < this.map[y].length; x++) {
+                if (this.map[y][x] === 0) slots.push({ y, x })
+            }
+        }
+
+        let slot = shuffleArray(slots)[0]
+        console.log(slot)
+
+        if (slot) {
+            this.scene.events.emit('pickBoardPos', this.snap.pt.x + slot.x, this.snap.pt.y + slot.y);
+            this.destroy();
+        }
     }
 }
 
