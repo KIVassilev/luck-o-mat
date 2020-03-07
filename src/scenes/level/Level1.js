@@ -52,6 +52,8 @@ class Level1 extends Phaser.Scene {
     }
 
     createBoardAndCards(data) {
+        this.basket = 0;
+        this.baskets = [ { x: 100, y: 600 }, { x: 300, y: 600}, { x:500, y: 600}];
         this.board = new Board(this, { x: 630, y: 230 })
         this.cards = []
         var itemW = CONFIG.item.width + this.board.padding
@@ -71,14 +73,14 @@ class Level1 extends Phaser.Scene {
             })
         }
 
-        this.hand = new Hand(this, { x: 100, y: 100});
+        this.hand = new Hand(this, { x: this.board.x, y: 100});
         this.events.on('cardOver', (pt) => {
           this.hand.positionOver(this.board.x + pt.x*itemW);
-        }, this)
+        }, this);
         this.events.on('pickBoardPos', (x, y, item) => {
           var i = this.board.items[y][x];
-          this.hand.pickBoardPos(i.x, i.y, i);
-        }, this)
+          this.hand.pickBoardPos(i.x, i.y, i, this.baskets[this.basket++]);
+        }, this);
     }
 
     createCharacters () {
