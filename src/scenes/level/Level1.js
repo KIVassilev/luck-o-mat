@@ -27,7 +27,7 @@ class Level1 extends Phaser.Scene {
     }
 
     create(data) {
-        const level = getCurrentLevel(33)
+        const level = getCurrentLevel()
         console.log(level)
         
         this.scene.launch('Hud')
@@ -40,17 +40,20 @@ class Level1 extends Phaser.Scene {
         }, this)
 
         // TODO: Iterate trough all levels available
-        const babyHappySound = this.sound.add('char-0-happy')
-        const babyCharacter = new Character({
-            scene: this,
-            key: 'char-0',
-            x: 140,
-            y: 250
+        level.chars.forEach((charId, i) => {
+            const charSizeX = 250
+            const charSound = this.sound.add(`char-${charId}-happy`)
+            const Character = new Character({
+                scene: this,
+                key: `char-${charId}`,
+                x: 100 + (charSizeX * i),
+                y: 250
+            })
+    
+            babyCharacter.on('pointerup', function () {
+                charSound.play()
+            }, this)
         })
-
-        babyCharacter.on('pointerup', function () {
-            babyHappySound.play()
-        }, this)
 
         this.createBoardAndCards(data)
     }
