@@ -23,7 +23,7 @@ class Level1 extends Phaser.Scene {
 
     init(data) {
 
-      }
+    }
 
     preload() {
         loader(this)
@@ -117,6 +117,9 @@ class Level1 extends Phaser.Scene {
     }
 
     onNewGame() {
+        this.events.off('pickBoardPos');
+        this.events.off('sct');
+        this.events.off('cardOver');
         this.scene.shutdown();
         this.scene.restart();
     }
