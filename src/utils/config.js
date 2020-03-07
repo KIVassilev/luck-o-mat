@@ -2,8 +2,8 @@ export const CONFIG = Object.freeze({
 	width: 1280,
 	height: 720,
 	gridSize: {
-		x: 6,
-		y: 6
+		x: 5,
+		y: 5
 	},
 	cardSize: {
 		x: 2,
