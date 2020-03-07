@@ -18,8 +18,8 @@ function generateCharacters(count) {
     return chars
 }
 
-function generateGrid(sizeX, sizeY) {
-    let grid = []
+function generateBoard(sizeX, sizeY) {
+    let board = []
 
     // Cols
     for (let y = 0; y < sizeX; y++) {
@@ -31,10 +31,10 @@ function generateGrid(sizeX, sizeY) {
             rows.push(getRandomInt(0, CONFIG.itemsCount))
         }
 
-        grid.push(rows)
+        board.push(rows)
     }
 
-    return grid
+    return board
 }
 
 function generateCards(count, sizeX, sizeY) {
@@ -65,12 +65,12 @@ function generateCards(count, sizeX, sizeY) {
 
 function generateRandomLevel() {
     const chars = generateCharacters(CONFIG.charsCount)
-    const grid = generateGrid(CONFIG.gridSize.x, CONFIG.gridSize.y)
+    const board = generateBoard(CONFIG.boardSize.x, CONFIG.boardSize.y)
     const cards = generateCards(CONFIG.cardsCount, CONFIG.cardSize.x, CONFIG.cardSize.y)
 
     return {
         chars,
-        grid,
+        board,
         cards
     }
 }

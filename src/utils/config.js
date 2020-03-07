@@ -21,7 +21,7 @@ export const CONFIG = Object.freeze({
     levels: [
         {
             id: 1,
-            grid: [
+            board: [
                 [1, 1, 1, 1, 1, 1],
                 [1, 1, 1, 1, 1, 1],
                 [1, 1, 1, 1, 1, 1],

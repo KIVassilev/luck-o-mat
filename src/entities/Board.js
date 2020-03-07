@@ -3,6 +3,7 @@ import { CONFIG } from '../utils/config'
 class Board extends Phaser.GameObjects.Container {
     constructor(scene, options) {
         super(scene);
+        console.log(scene.level)
         const itemWidth = CONFIG.item.width;
         const itemHeight = CONFIG.item.height;
         this.x = options.x;
