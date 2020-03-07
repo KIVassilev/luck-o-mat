@@ -15,6 +15,7 @@ class Character extends Phaser.GameObjects.Sprite {
     getItem(item) {
         item.destroy()
         console.log(item)
+        this.scene.events.emit('sct', this.x, this.y + this.height, 'Thank you bitch!');
     }
 }
 
