@@ -88,8 +88,11 @@ class Level1 extends Phaser.Scene {
           }
           this.basket++;
           if (this.basket == this.baskets.length) {
-            for(i = 0; i < this.baskets.length; i++) {
-              this.input.setDraggable(this.baskets[i].item);
+            for (i = 0; i < this.baskets.length; i++) {
+                let item = this.baskets[i].item
+                item.anchorX = item.x
+                item.anchorY = item.y
+                this.input.setDraggable(item);
             }
             this.hint.setText('GIVE THE ITEMS TO THE CHARS');
           } else {
@@ -101,6 +104,7 @@ class Level1 extends Phaser.Scene {
     }
 
     createCharacters () {
+        this.chars = []
         this.level.chars.forEach((charId, i) => {
             const charSizeX = 215
             const charSound = this.sound.add(`char-${charId}-happy`)
@@ -110,10 +114,11 @@ class Level1 extends Phaser.Scene {
                 x: 15 + (charSizeX * i),
                 y: 50
             })
-    
             Char.on('pointerup', function() {
                 charSound.play()
             }, this)
+
+            this.chars.push(Char)
         })
     }
 

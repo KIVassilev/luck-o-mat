@@ -11,6 +11,11 @@ class Character extends Phaser.GameObjects.Sprite {
 
         config.scene.add.existing(this)
     }
+
+    getItem(item) {
+        item.destroy()
+        console.log(item)
+    }
 }
 
 export default Character

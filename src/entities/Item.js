@@ -4,21 +4,42 @@ class Item extends Phaser.GameObjects.Sprite {
 
         this.x = config.x
         this.y = config.y
-        this.isPicked = false
+        this.anchorX = config.x
+        this.anchorY = config.y
 
         this.setInteractive()
 
-        this.on('drag', function (pointer, x, y) {
-            
-            this.x = x;
-            this.y = y;
-        })
+        this.on('drag', this.drag)
+        this.on('dragend', this.dragEnd);
+
+        config.scene.input.setDraggable(this);
 
         config.scene.add.existing(this)
     }
 
-    pick () {
-        this.isPicked = true
+    drag(pointer, x, y) {
+        this.x = x;
+        this.y = y;
+    }
+
+    dragEnd(pointer, x, y) {
+        const chars = this.scene.chars
+        let char = false
+
+        for (let i = 0; i < chars.length; i++) {
+            let bounds = chars[i].getBounds()
+            if (bounds.contains(pointer.x, pointer.y)) {
+                char = chars[i]
+                break
+            }
+        }
+
+        if (char) {
+            char.getItem(this)
+        } else {
+            this.x = this.anchorX;
+            this.y = this.anchorY;
+        }
     }
 }
 
