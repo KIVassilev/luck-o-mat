@@ -28,7 +28,7 @@ export const CONFIG = Object.freeze({
                 [0, 0, 0, 0, 0],
                 [0, 0, 0, 0, 0]
             ],
-            chars: [0],
+            chars: [0, 1, 2],
             cards: [
                 [
                     [1, 1],
@@ -52,10 +52,35 @@ export const CONFIG = Object.freeze({
             items: [{ id: 0, pt: 100 }, { id: 1, pt: -50 }], 
             talk: { hi: "Hello", win: "That is great", lose: "You suck" } 
         },
-        { id: 1, name: "Baba", items: [ { id: 3, pt: 100}, { id:3, pt: -50} ], talk: { hi: "Hello", win: "That is great", lose: "You suck" } },
-        { id: 2, name: "ET", items: [ { id: 3, pt: 100}, { id:3, pt: -50} ], talk: { hi: "Hello", win: "That is great", lose: "You suck" } },
-        { id: 3, name: "Robot", items: [ { id: 3, pt: 100}, { id:3, pt: -50} ], talk: { hi: "Hello", win: "That is great", lose: "You suck" } },
-        { id: 4, name: "Alien", items: [ { id: 3, pt: 100}, { id:3, pt: -50} ], talk: { hi: "Hello", win: "That is great", lose: "You suck" } },
-        { id: 5, name: "St. Claus", items: [ { id: 3, pt: 100}, { id:3, pt: -50} ], talk: { hi: "Hello", win: "That is great", lose: "You suck" } }
+        { 
+            id: 1, 
+            name: "Kifla", 
+            items: [{ id: 0, pt: 100 }, { id: 1, pt: -50 }], 
+            talk: { hi: "Hello", win: "That is great", lose: "You suck" } 
+        },
+        { 
+            id: 2, 
+            name: "Kifla", 
+            items: [{ id: 0, pt: 100 }, { id: 1, pt: -50 }], 
+            talk: { hi: "Hello", win: "That is great", lose: "You suck" } 
+        },
+        { 
+            id: 3, 
+            name: "Kifla", 
+            items: [{ id: 0, pt: 100 }, { id: 1, pt: -50 }], 
+            talk: { hi: "Hello", win: "That is great", lose: "You suck" } 
+        },
+        { 
+            id: 4, 
+            name: "Kifla", 
+            items: [{ id: 0, pt: 100 }, { id: 1, pt: -50 }], 
+            talk: { hi: "Hello", win: "That is great", lose: "You suck" } 
+        },
+        { 
+            id: 5, 
+            name: "Kifla", 
+            items: [{ id: 0, pt: 100 }, { id: 1, pt: -50 }], 
+            talk: { hi: "Hello", win: "That is great", lose: "You suck" } 
+        }
     ]
 })

@@ -1,6 +1,6 @@
 import loader from '../../utils/loader'
-import backgroundImg from '../../assets/background.png'
-import { char0Sprite } from '../../assets/sprite'
+import machineImg from '../../assets/machine.png'
+import { SPRITE } from '../../assets/sprite'
 import { clickSound } from '../../assets/audio'
 import Character from '../../entities/Character'
 import { getLevel } from '../../utils/helpers'
@@ -24,12 +24,16 @@ class Level1 extends Phaser.Scene {
     preload() {
         loader(this)
 
-        this.load.image('background', backgroundImg)
+        this.load.image('machine', machineImg)
         this.load.image('items', imgItems)
         this.load.spritesheet('hand', imgHand, { frameWidth: 166, frameHeight: 100 });
         this.load.image('rope', imgRope);
         this.load.image('items', imgItems)
-        this.load.spritesheet('char-0', char0Sprite, { frameWidth: 215, frameHeight: 390 })
+        // Characters 
+        for (let i = 0; i < 6; i++) {
+            this.load.spritesheet(`char-${i}`, SPRITE.chars[i], { frameWidth: 215, frameHeight: 390 })
+        }
+        
         this.load.audio('char-0-happy', clickSound)
     }
 
@@ -40,6 +44,7 @@ class Level1 extends Phaser.Scene {
         this.scene.bringToTop('Hud')
 
         this.add.sprite(0, 0, 'background').setOrigin(0, 0)
+        this.add.sprite(0, 0, 'machine').setOrigin(0, 0)
 
         // Spawn characters
         this.createCharacters()
@@ -115,18 +120,18 @@ class Level1 extends Phaser.Scene {
     createCharacters () {
         this.chars = []
         this.level.chars.forEach((charId, i) => {
-            const charSizeX = 215
-            const charSound = this.sound.add(`char-${charId}-happy`)
+            const charSizeX = 180
+            // const charSound = this.sound.add(`char-${charId}-happy`)
             const Char = new Character({
                 scene: this,
                 key: `char-${charId}`,
-                x: 15 + (charSizeX * i),
+                x: charSizeX * i,
                 y: 50,
                 id: charId
             })
-            Char.on('pointerup', function() {
-                charSound.play()
-            }, this)
+            // Char.on('pointerup', function() {
+            //     charSound.play()
+            // }, this)
 
             this.chars.push(Char)
         })

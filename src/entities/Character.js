@@ -2,7 +2,7 @@ import { CONFIG } from '../utils/config'
 
 class Character extends Phaser.GameObjects.Sprite {
     constructor(config) {
-        super(config.scene, 0, 0, config.key, 0)
+        super(config.scene, 0, 0, config.key, config.frame || 0)
 
         this.x = config.x
         this.y = config.y
