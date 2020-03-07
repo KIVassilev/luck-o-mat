@@ -27,7 +27,8 @@ function generateGrid(sizeX, sizeY) {
 
 		// Rows
 		for (let x = 0; x < sizeY; x++) {
-			rows.push(x)
+			// TODO: make it not random xD
+			rows.push(getRandomInt(0, CONFIG.itemsCount))
 		}
 
 		grid.push(rows)
