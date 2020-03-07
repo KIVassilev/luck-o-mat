@@ -87,7 +87,14 @@ class Level1 extends Phaser.Scene {
             this.hand.pickBoardPos(this.board.x+x*itemW, this.board.y + y*itemH, null, this.baskets[this.basket]);
           }
           this.basket++;
+          if (this.basket == this.baskets.length) {
+            this.hint.setText('GIVE THE ITEMS TO THE CHARS');
+          } else {
+            this.hint.setText('COLLECT THREE ITEMS');
+          }
         }, this);
+
+        this.hint = this.add.text(80, 645, 'DRAG THE CARDS ON THE RIGHT', { font: '22px Arial', color: '#fff', stroke: '#000', strokeThickness: 4});
     }
 
     createCharacters () {

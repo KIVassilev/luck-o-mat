@@ -18,7 +18,7 @@ class Hand extends Phaser.GameObjects.Container {
         this.scene.tweens.add({
             targets: this,
             x: x,
-            duration: 500,
+            duration: 300,
             ease: 'Linear'
         });
     }
@@ -30,7 +30,7 @@ class Hand extends Phaser.GameObjects.Container {
               { y: 100 } ,
               { x: this.dropPos.x } ,
             ],
-            duration: 1000,
+            duration: 800,
             ease: 'Linear',
             onComplete: this.onDrop.bind(this)
         });
@@ -44,7 +44,7 @@ class Hand extends Phaser.GameObjects.Container {
             targets: this,
             x: x,
             y: y,
-            duration: 2000,
+            duration: 1000,
             ease: 'Linear',
             onComplete: this.onPick.bind(this)
         });
