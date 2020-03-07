@@ -59,6 +59,7 @@ class Card extends Phaser.GameObjects.Graphics {
         this.on('dragend', function (pointer, dragX, dragY) {
             this.scale = 0.8;
             if (this.snap.pt) {
+                this.scene.events.emit('pickBoardPos', this.snap.pt.x, this.snap.pt.y);
                 this.destroy();
             } else {
                 this.x = this.anchorX;

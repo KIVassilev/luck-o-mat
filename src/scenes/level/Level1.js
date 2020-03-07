@@ -75,6 +75,10 @@ class Level1 extends Phaser.Scene {
         this.events.on('cardOver', (pt) => {
           this.hand.positionOver(this.board.x + pt.x*itemW);
         }, this)
+        this.events.on('pickBoardPos', (x, y, item) => {
+          var i = this.board.items[x][y];
+          this.hand.pickBoardPos(i.x, i.y, i);
+        }, this)
     }
 
     createCharacters () {
