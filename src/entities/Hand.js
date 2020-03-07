@@ -52,13 +52,15 @@ class Hand extends Phaser.GameObjects.Container {
 
     onDrop(tween) {
         this.hand.setFrame(0);
-        this.scene.tweens.add({
-            targets: this.item,
-            x: this.dropPos.x,
-            y: this.dropPos.y,
-            duration: 800,
-            ease: 'Exponential'
-        });
+        if (this.item) {
+            this.scene.tweens.add({
+                targets: this.item,
+                x: this.dropPos.x,
+                y: this.dropPos.y,
+                duration: 800,
+                ease: 'Exponential'
+            });
+        }
     }
 
     onPick(tween) {
