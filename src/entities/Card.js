@@ -1,11 +1,13 @@
+import { CONFIG } from '../utils/config'
+
 class Card extends Phaser.GameObjects.Graphics {
     constructor(scene, options) {
         super(scene, options);
-        const itemWidth = 80;
-        const itemHeight = 80;
-        const pad = 14;
-        const w = pad*3 + itemWidth*2;
-        const h = pad*3 + itemHeight*2;
+        const itemWidth = CONFIG.item.width;
+        const itemHeight = CONFIG.item.height;
+        const pad = CONFIG.boardSize.padding;
+        const w = pad * 3 + itemWidth * 2;
+        const h = pad * 3 + itemHeight * 2;
         var x, y;
 
         this.fillStyle(0x555555, 1);
@@ -33,12 +35,12 @@ class Card extends Phaser.GameObjects.Graphics {
         scene.add.existing(this);
         this.setInteractive();
         this.scale = 0.8;
-        scene.input.on('drag', function (pointer, gameObject, _x, _y) {
-            gameObject.scale = 1;
+        this.on('drag', function (pointer, _x, _y) {
+            this.scale = 1;
             var x = pointer.x;
             var y = pointer.y;
-            if (gameObject.snap) {
-                var s = gameObject.snap;
+            if (this.snap) {
+                var s = this.snap;
                 s.pt = null;
                 if (s.rect.contains(x, y)) {
                     x = ((x-s.rect.x)/s.itemWidth)|0;
@@ -50,16 +52,16 @@ class Card extends Phaser.GameObjects.Graphics {
                     y += s.rect.y + s.itemHeight/2;
                 }
             }
-            gameObject.x = x - gameObject.width/2;
-            gameObject.y = y - gameObject.height/2;
+            this.x = x - this.width/2;
+            this.y = y - this.height/2;
         });
-        scene.input.on('dragend', function (pointer, gameObject, dragX, dragY) {
-            gameObject.scale = 0.8;
-            if (gameObject.snap.pt) {
-              gameObject.destroy();
+        this.on('dragend', function (pointer, dragX, dragY) {
+            this.scale = 0.8;
+            if (this.snap.pt) {
+                this.destroy();
             } else {
-              gameObject.x = gameObject.anchorX;
-              gameObject.y = gameObject.anchorY;
+                this.x = this.anchorX;
+                this.y = this.anchorY;
             }
         });
         scene.input.setDraggable(this);
