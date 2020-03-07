@@ -25,6 +25,7 @@ class Character extends Phaser.GameObjects.Sprite {
             }
         }
         this.scene.game.events.emit('addScore', charItem.pt || CONFIG.item.pointsPenalty)
+        this.scene.events.emit('sct', this.x, this.y + this.height, 'Thank you bitch!');
         item.destroy()
     }
 }

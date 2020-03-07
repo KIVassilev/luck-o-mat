@@ -73,6 +73,7 @@ class Level1 extends Phaser.Scene {
         this.events.on('cardOver', (pt) => {
           this.hand.positionOver(this.board.x + pt.x*itemW);
         }, this);
+        this.events.on('sct', this.sct.bind(this));
         this.events.on('pickBoardPos', (x, y, item) => {
           var i = this.board.items[y][x];
           this.baskets[this.basket].item = i;
@@ -97,6 +98,18 @@ class Level1 extends Phaser.Scene {
         }, this);
 
         this.hint = this.add.text(80, 645, 'DRAG THE CARDS ON THE RIGHT', { font: '22px Arial', color: '#fff', stroke: '#000', strokeThickness: 4});
+    }
+
+    sct(x, y, text) {
+        var text = this.add.text(x, y, text, { font: '64px Comic Sans MS', color: '#fff', stroke: '#000', strokeThickness: 4});
+        this.tweens.add({
+            targets: text,
+            y: 0,
+            duration: 1000,
+            ease: 'Linear',
+            onComplete: () => { text.destroy()}
+        });
+
     }
 
     createCharacters () {
