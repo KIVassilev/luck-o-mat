@@ -1,4 +1,5 @@
 import loader from '../../utils/loader'
+import Button from '../../entities/Button'
 import backgroundImg from '../../assets/background.png'
 import { char0Sprite } from '../../assets/sprite'
 import { clickSound } from '../../assets/audio'
@@ -11,6 +12,7 @@ import Board from '../../entities/Board'
 import imgItems from '../../assets/items.png'
 import imgHand from '../../assets/hand.png'
 import imgRope from '../../assets/rope.png'
+import imgBigButton from '../../assets/bigbutton.png'
 
 class Level1 extends Phaser.Scene {
     constructor() {
@@ -19,7 +21,9 @@ class Level1 extends Phaser.Scene {
         this.level = getLevel()
     }
 
-    init(data) { }
+    init(data) {
+
+      }
 
     preload() {
         loader(this)
@@ -28,6 +32,7 @@ class Level1 extends Phaser.Scene {
         this.load.image('items', imgItems)
         this.load.spritesheet('hand', imgHand, { frameWidth: 166, frameHeight: 100 });
         this.load.image('rope', imgRope);
+        this.load.spritesheet('bigbutton', imgBigButton, { frameWidth: 1120/4, frameHeight: 95 });
         this.load.image('items', imgItems)
         this.load.spritesheet('char-0', char0Sprite, { frameWidth: 215, frameHeight: 390 })
         this.load.audio('char-0-happy', clickSound)
@@ -47,7 +52,7 @@ class Level1 extends Phaser.Scene {
         this.createBoardAndCards(data)
     }
 
-    createBoardAndCards(data) {
+    createBoardAndCards() {
         this.basket = 0;
         this.baskets = [ { x: 100, y: 600 }, { x: 300, y: 600}, { x:500, y: 600}];
         this.board = new Board(this, { x: 630, y: 230 })
@@ -98,6 +103,22 @@ class Level1 extends Phaser.Scene {
         }, this);
 
         this.hint = this.add.text(80, 645, 'DRAG THE CARDS ON THE RIGHT', { font: '22px Arial', color: '#fff', stroke: '#000', strokeThickness: 4});
+
+        const newButton = new Button({
+            scene: this,
+            key: 'bigbutton',
+            x: 1180,
+            y: 680
+        })
+
+        newButton.scale = 0.6;
+
+        newButton.on('pointerup', this.onNewGame.bind(this));
+    }
+
+    onNewGame() {
+        this.scene.shutdown();
+        this.scene.restart();
     }
 
     sct(x, y, text) {
