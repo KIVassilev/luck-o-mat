@@ -6,6 +6,7 @@ import Character from '../../entities/Character'
 import { getCurrentLevel } from '../../utils/helpers'
 import Card from '../../entities/Card'
 import Board from '../../entities/Board'
+import imgItems from '../../assets/items.png'
 
 class Level1 extends Phaser.Scene {
 	constructor() {
@@ -20,6 +21,7 @@ class Level1 extends Phaser.Scene {
 
 		this.load.image('background', backgroundImg)
 		this.load.image('char-0', babySprite)
+		this.load.image('items', imgItems)
 		this.load.audio('char-0-happy', clickSound)
 	}
 

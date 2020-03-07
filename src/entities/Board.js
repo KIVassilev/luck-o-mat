@@ -12,8 +12,7 @@ class Board extends Phaser.GameObjects.Container {
     for (var y = 0; y < boardSize; y++) {
       this.items[y] = [];
       for (var x = 0; x < boardSize; x++) {
-        var sprite = scene.add.sprite(x*(itemWidth+pad), y*(itemHeight+pad), 'logo');
-        sprite.scale = 0.2;
+        var sprite = scene.add.sprite(x*(itemWidth+pad), y*(itemHeight+pad), 'items');
         this.items[y][x] = sprite;
         this.add(sprite);
       }
