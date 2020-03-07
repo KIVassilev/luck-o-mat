@@ -2,85 +2,85 @@ import { CONFIG } from './config'
 
 // Returns a random integer between min (inclusive) and max (inclusive).
 function getRandomInt(min, max) {
-	min = Math.ceil(min)
-	max = Math.floor(max)
+    min = Math.ceil(min)
+    max = Math.floor(max)
 
-	return Math.floor(Math.random() * (max - min + 1)) + min
+    return Math.floor(Math.random() * (max - min + 1)) + min
 }
 
 function generateCharacters(count) {
-	let chars = []
+    let chars = []
 
-	for (let i = 0; i < count; i++) {
-		chars.push(i)
-	}
+    for (let i = 0; i < count; i++) {
+        chars.push(i)
+    }
 
-	return chars
+    return chars
 }
 
 function generateGrid(sizeX, sizeY) {
-	let grid = []
+    let grid = []
 
-	// Cols
-	for (let y = 0; y < sizeX; y++) {
-		let rows = []
+    // Cols
+    for (let y = 0; y < sizeX; y++) {
+        let rows = []
  
-		// Rows
-		for (let x = 0; x < sizeY; x++) {
-			// TODO: make it not random xD
-			rows.push(getRandomInt(0, CONFIG.itemsCount))
-		}
+        // Rows
+        for (let x = 0; x < sizeY; x++) {
+            // TODO: make it not random xD
+            rows.push(getRandomInt(0, CONFIG.itemsCount))
+        }
 
-		grid.push(rows)
-	}
+        grid.push(rows)
+    }
 
-	return grid
+    return grid
 }
 
 function generateCards(count, sizeX, sizeY) {
-	let cards = []
+    let cards = []
 
-	// Total cards
-	for (let i = 0; i < count; i++) {
-		let card = []
+    // Total cards
+    for (let i = 0; i < count; i++) {
+        let card = []
 
-		// Cols
-		for (let y = 0; y < sizeX; y++) {
-			let rows = []
+        // Cols
+        for (let y = 0; y < sizeX; y++) {
+            let rows = []
 
-			// Rows
-			for (let x = 0; x < sizeY; x++) {
-				// TODO: make it not random xD
-				rows.push(getRandomInt(0, 1))
-			}
+            // Rows
+            for (let x = 0; x < sizeY; x++) {
+                // TODO: make it not random xD
+                rows.push(getRandomInt(0, 1))
+            }
 
-			card.push(rows)
-		}
+            card.push(rows)
+        }
 
-		cards.push(card)
-	}
+        cards.push(card)
+    }
 
-	return cards
+    return cards
 }
 
 function generateRandomLevel() {
-	const chars = generateCharacters(CONFIG.charsCount)
-	const grid = generateGrid(CONFIG.gridSize.x, CONFIG.gridSize.y)
-	const cards = generateCards(CONFIG.cardsCount, CONFIG.cardSize.x, CONFIG.cardSize.y)
+    const chars = generateCharacters(CONFIG.charsCount)
+    const grid = generateGrid(CONFIG.gridSize.x, CONFIG.gridSize.y)
+    const cards = generateCards(CONFIG.cardsCount, CONFIG.cardSize.x, CONFIG.cardSize.y)
 
-	return {
-		chars,
-		grid,
-		cards
-	}
+    return {
+        chars,
+        grid,
+        cards
+    }
 }
 
 export function getCurrentLevel(index) {
-	const levelIndex = index ? index : parseInt(localStorage.getItem('level-index'))
-	let level = levelIndex >= 0 ? CONFIG.levels[levelIndex] : CONFIG.levels[0]
+    const levelIndex = index ? index : parseInt(localStorage.getItem('level-index'))
+    let level = levelIndex >= 0 ? CONFIG.levels[levelIndex] : CONFIG.levels[0]
 
-	// If we cannot find pre generated level... generate one
-	if (!level) level = generateRandomLevel()
+    // If we cannot find pre generated level... generate one
+    if (!level) level = generateRandomLevel()
 
-	return level
+    return level
 }
