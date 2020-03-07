@@ -43,14 +43,14 @@ class Level1 extends Phaser.Scene {
         level.chars.forEach((charId, i) => {
             const charSizeX = 250
             const charSound = this.sound.add(`char-${charId}-happy`)
-            const Character = new Character({
+            const Char = new Character({
                 scene: this,
                 key: `char-${charId}`,
                 x: 100 + (charSizeX * i),
                 y: 250
             })
     
-            babyCharacter.on('pointerup', function () {
+            Char.on('pointerup', function () {
                 charSound.play()
             }, this)
         })
