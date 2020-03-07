@@ -72,6 +72,7 @@ class Level1 extends Phaser.Scene {
         }
 
         this.hand = new Hand(this, { x: 100, y: 100});
+        this.hand.pick(300, 300);
     }
 
     createCharacters () {
