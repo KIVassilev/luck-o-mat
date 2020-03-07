@@ -13,6 +13,8 @@ class Item extends Phaser.GameObjects.Sprite {
         this.on('drag', this.drag)
         this.on('dragend', this.dragEnd);
 
+        this.scale = 2/3
+
         config.scene.add.existing(this)
     }
 

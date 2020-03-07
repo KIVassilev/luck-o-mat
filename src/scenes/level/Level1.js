@@ -9,7 +9,6 @@ import { CONFIG } from '../../utils/config'
 import Card from '../../entities/Card'
 import Hand from '../../entities/Hand'
 import Board from '../../entities/Board'
-import imgItems from '../../assets/items.png'
 import imgHand from '../../assets/hand.png'
 import imgRope from '../../assets/rope.png'
 
@@ -28,11 +27,10 @@ class Level1 extends Phaser.Scene {
         loader(this)
 
         this.load.image('machine', machineImg)
-        this.load.image('items', imgItems)
         this.load.spritesheet('hand', imgHand, { frameWidth: 166, frameHeight: 100 });
         this.load.image('rope', imgRope);
         this.load.spritesheet('bigbutton', SPRITE.bigButton, { frameWidth: 1120/4, frameHeight: 95 });
-        this.load.image('items', imgItems)
+        this.load.spritesheet('items', SPRITE.items, { frameWidth: 120, frameHeight: 120 });
         // Characters 
         for (let i = 0; i < 6; i++) {
             this.load.spritesheet(`char-${i}`, SPRITE.chars[i], { frameWidth: 215, frameHeight: 390 })
