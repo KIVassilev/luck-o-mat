@@ -5,6 +5,8 @@ class Character extends Phaser.GameObjects.Sprite {
         this.x = config.x
         this.y = config.y
 
+        this.setOrigin(0, 0)
+
         this.setInteractive()
 
         config.scene.add.existing(this)
