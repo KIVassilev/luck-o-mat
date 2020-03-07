@@ -3,13 +3,13 @@ class Card extends Phaser.GameObjects.Graphics {
     super(scene, options);
     const itemWidth = 80;
     const itemHeight = 80;
-    const pad = 10;
+    const pad = 5;
     const w = pad*3 + itemWidth*2;
     const h = pad*3 + itemHeight*2;
     var x, y;
 
 
-    this.fillStyle(0xaaaaaa, 1);
+    this.fillStyle(0x555555, 1);
     for (x = 0; x < 3; x++) {
       this.fillRect(0, x*(pad+itemHeight), w, pad);
       this.fillRect(x*(pad+itemWidth), 0, pad, h);

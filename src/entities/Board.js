@@ -4,7 +4,7 @@ class Board extends Phaser.GameObjects.Container {
     const itemWidth = 80;
     const itemHeight = 80;
     const pad = 10;
-    const boardSize = 6;
+    const boardSize = 5;
     this.x = options.x;
     this.y = options.y;
     this.items = [];
