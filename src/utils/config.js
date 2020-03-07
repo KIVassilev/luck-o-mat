@@ -28,6 +28,7 @@ export const CONFIG = Object.freeze({
                 [0, 0, 0, 0, 1],
                 [0, 1, 0, 0, 0]
             ],
+            chars: [0]
 
         }
     ],
