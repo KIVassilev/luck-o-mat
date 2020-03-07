@@ -64,7 +64,7 @@ class Level1 extends Phaser.Scene {
         var itemW = 80 + board.pad
         var itemH = 80 + board.pad
         var snap = {
-            rect: new Phaser.Geom.Rectangle(630, 230, CONFIG.gridSize.x*itemW, CONFIG.gridSize.y*itemH),
+            rect: new Phaser.Geom.Rectangle(630, 230, (CONFIG.gridSize.x-1)*itemW, (CONFIG.gridSize.y-1)*itemH),
             itemWidth: itemW,
             itemHeight: itemH
         }
