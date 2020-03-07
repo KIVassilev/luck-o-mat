@@ -6,8 +6,11 @@ import Character from '../../entities/Character'
 import { getLevel } from '../../utils/helpers'
 import { CONFIG } from '../../utils/config'
 import Card from '../../entities/Card'
+import Hand from '../../entities/Hand'
 import Board from '../../entities/Board'
 import imgItems from '../../assets/items.png'
+import imgHand from '../../assets/hand.png'
+import imgRope from '../../assets/rope.png'
 
 class Level1 extends Phaser.Scene {
     constructor() {
@@ -23,6 +26,9 @@ class Level1 extends Phaser.Scene {
 
         this.load.image('background', backgroundImg)
         this.load.image('char-0', babySprite)
+        this.load.image('items', imgItems)
+        this.load.spritesheet('hand', imgHand,  { frameWidth: 166, frameHeight: 100 });
+        this.load.image('rope', imgRope);
         this.load.image('items', imgItems)
         this.load.audio('char-0-happy', clickSound)
     }
@@ -64,6 +70,8 @@ class Level1 extends Phaser.Scene {
         for (var i = 0; i < 3; i++) {
             this.cards[i] = new Card(this, { x: 1090, y: 60 + i * 200, map: maps[i], snap: snap })
         }
+
+        this.hand = new Hand(this, { x: 100, y: 100});
     }
 
     createCharacters () {
