@@ -21,13 +21,13 @@ class Hand extends Phaser.GameObjects.Container {
             ease: 'Linear'
         });
     }
-    pickItem(item) {
+    pickBoardPos(x, y, item) {
         this.item = item;
         this.hand.setFrame(1);
         this.scene.tweens.add({
             targets: this,
-            x: item.x,
-            y: item.y,
+            x: x,
+            y: y,
             duration: 2000,
             ease: 'Linear',
             onComplete: this.onPick.bind(this)
