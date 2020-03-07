@@ -4,6 +4,8 @@ import { babySprite } from '../../assets/sprite'
 import { clickSound } from '../../assets/audio'
 import Character from '../../entities/Character'
 import { getCurrentLevel } from '../../utils/helpers'
+import Card from '../../entities/Card'
+import Board from '../../entities/Board'
 
 class Level1 extends Phaser.Scene {
 	constructor() {
@@ -46,6 +48,20 @@ class Level1 extends Phaser.Scene {
 		babyCharacter.on('pointerup', function () {
 			babyHappySound.play()
 		}, this)
+    this.createBoardAndCards(data);
+	}
+
+  createBoardAndCards(data) {
+    var snap = {
+      rect: new Phaser.Geom.Rectangle(500, 200, 6*80, 6*80),
+      itemWidth: 80,
+      itemHeight: 80
+    }
+    let board = new Board(this, { x: 500, y: 200});
+    this.cards = [];
+    for (var i = 0; i < 3; i++) {
+      this.cards[i] = new Card(this, { x: 1000, y: 100+i*200, map: [[1,0],[0,1]], snap: snap});
+    }
 	}
 
 	update(time, delta) { }
