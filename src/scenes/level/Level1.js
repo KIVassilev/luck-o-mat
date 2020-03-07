@@ -26,7 +26,7 @@ class Level1 extends Phaser.Scene {
 	}
 
 	create(data) {
-		const level = getCurrentLevel()
+		const level = getCurrentLevel(33)
 		console.log(level)
 		
 		this.scene.launch('Hud')

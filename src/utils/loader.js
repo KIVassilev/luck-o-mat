@@ -5,7 +5,7 @@ export default function (scene) {
 	const progressBox = scene.add.graphics()
 
 	progressBox.fillStyle(0x222222, 0.8)
-	progressBox.fillRect(240, 270, 320, 50)
+	progressBox.fillRect(width / 2 - 160, height / 2 - 30, 320, 50)
 
 
 	const loadingText = scene.make.text({
@@ -46,7 +46,7 @@ export default function (scene) {
 		percentText.setText(parseInt(value * 100) + '%')
 		progressBar.clear()
 		progressBar.fillStyle(0xffffff, 1)
-		progressBar.fillRect(250, 280, 300 * value, 30)
+		progressBar.fillRect(width / 2 - 150, height / 2 - 20, 300 * value, 30)
 	});
 
 	scene.load.on('fileprogress', function (file) {

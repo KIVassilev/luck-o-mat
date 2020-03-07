@@ -24,7 +24,7 @@ function generateGrid(sizeX, sizeY) {
 	// Cols
 	for (let y = 0; y < sizeX; y++) {
 		let rows = []
-
+ 
 		// Rows
 		for (let x = 0; x < sizeY; x++) {
 			// TODO: make it not random xD
@@ -75,9 +75,9 @@ function generateRandomLevel() {
 	}
 }
 
-export function getCurrentLevel() {
-	const levelIndex = localStorage.getItem('level-index')
-	let level = levelIndex ? CONFIG.levels[levelIndex] : CONFIG.levels[0]
+export function getCurrentLevel(index) {
+	const levelIndex = index ? index : parseInt(localStorage.getItem('level-index'))
+	let level = levelIndex >= 0 ? CONFIG.levels[levelIndex] : CONFIG.levels[0]
 
 	// If we cannot find pre generated level... generate one
 	if (!level) level = generateRandomLevel()
