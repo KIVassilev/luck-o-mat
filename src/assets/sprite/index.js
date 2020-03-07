@@ -1,7 +1,7 @@
 import buttonSprite from './buttons.png'
-import babySprite from './baby.png'
+import char0Sprite from './char-0.png'
 
 export {
     buttonSprite,
-    babySprite
+    char0Sprite
 }
