@@ -12,6 +12,15 @@ class Hand extends Phaser.GameObjects.Container {
         this.add(this.rope);
         scene.add.existing(this);
     }
+    positionOver(x) {
+        this.hand.setFrame(0);
+        this.scene.tweens.add({
+            targets: this,
+            x: x,
+            duration: 500,
+            ease: 'Linear'
+        });
+    }
     pickItem(item) {
         this.item = item;
         this.hand.setFrame(1);

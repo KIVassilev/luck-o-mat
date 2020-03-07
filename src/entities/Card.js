@@ -48,6 +48,7 @@ class Card extends Phaser.GameObjects.Graphics {
                     y *= s.itemHeight;
                     x += s.rect.x + s.itemWidth/2;
                     y += s.rect.y + s.itemHeight/2;
+                    scene.events.emit('cardOver', s.pt)
                 }
             }
             gameObject.x = x - gameObject.width/2;

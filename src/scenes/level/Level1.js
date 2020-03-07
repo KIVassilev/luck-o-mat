@@ -52,10 +52,10 @@ class Level1 extends Phaser.Scene {
     }
 
     createBoardAndCards(data) {
-        let board = new Board(this, { x: 630, y: 230 })
+        this.board = new Board(this, { x: 630, y: 230 })
         this.cards = []
-        var itemW = CONFIG.item.width + board.padding
-        var itemH = CONFIG.item.height + board.padding
+        var itemW = CONFIG.item.width + this.board.padding
+        var itemH = CONFIG.item.height + this.board.padding
         var snap = {
             rect: new Phaser.Geom.Rectangle(630, 230, (CONFIG.boardSize.x - 1) * itemW, (CONFIG.boardSize.y - 1) * itemH),
             itemWidth: itemW,
@@ -72,7 +72,9 @@ class Level1 extends Phaser.Scene {
         }
 
         this.hand = new Hand(this, { x: 100, y: 100});
-        this.hand.pickItem(board.items[1][1]);
+        this.events.on('cardOver', (pt) => {
+          this.hand.positionOver(this.board.x + pt.x*itemW);
+        }, this)
     }
 
     createCharacters () {
