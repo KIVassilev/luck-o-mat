@@ -12,6 +12,7 @@ class Hand extends Phaser.GameObjects.Container {
         this.add(this.rope);
         scene.add.existing(this);
     }
+
     positionOver(x) {
         this.hand.setFrame(0);
         this.scene.tweens.add({
@@ -21,6 +22,16 @@ class Hand extends Phaser.GameObjects.Container {
             ease: 'Linear'
         });
     }
+    
+    dropOver(x) {
+        this.scene.tweens.add({
+            targets: [this, this.item],
+            y: 100,
+            duration: 1000,
+            ease: 'Linear'
+        });
+    }
+
     pickBoardPos(x, y, item) {
         this.item = item;
         this.hand.setFrame(1);
@@ -33,7 +44,9 @@ class Hand extends Phaser.GameObjects.Container {
             onComplete: this.onPick.bind(this)
         });
     }
+
     onPick(tween) {
+        this.dropOver(100);
         tween.targets[0].hand.setFrame(2);
     }
 }

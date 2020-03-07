@@ -76,7 +76,7 @@ class Level1 extends Phaser.Scene {
           this.hand.positionOver(this.board.x + pt.x*itemW);
         }, this)
         this.events.on('pickBoardPos', (x, y, item) => {
-          var i = this.board.items[x][y];
+          var i = this.board.items[y][x];
           this.hand.pickBoardPos(i.x, i.y, i);
         }, this)
     }
