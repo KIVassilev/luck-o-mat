@@ -39,9 +39,11 @@ class Card extends Phaser.GameObjects.Graphics {
             var y = pointer.y;
             if (gameObject.snap) {
                 var s = gameObject.snap;
+                s.pt = null;
                 if (s.rect.contains(x, y)) {
                     x = ((x-s.rect.x)/s.itemWidth)|0;
                     y = ((y-s.rect.y)/s.itemHeight)|0;
+                    s.pt = { x:x, y:y};
                     x *= s.itemWidth;
                     y *= s.itemHeight;
                     x += s.rect.x + s.itemWidth/2;
@@ -52,9 +54,13 @@ class Card extends Phaser.GameObjects.Graphics {
             gameObject.y = y - gameObject.height/2;
         });
         scene.input.on('dragend', function (pointer, gameObject, dragX, dragY) {
-            gameObject.x = gameObject.anchorX;
-            gameObject.y = gameObject.anchorY;
             gameObject.scale = 0.8;
+            if (gameObject.snap.pt) {
+              gameObject.destroy();
+            } else {
+              gameObject.x = gameObject.anchorX;
+              gameObject.y = gameObject.anchorY;
+            }
         });
         scene.input.setDraggable(this);
     }
