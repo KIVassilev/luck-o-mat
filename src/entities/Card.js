@@ -3,7 +3,7 @@ class Card extends Phaser.GameObjects.Graphics {
         super(scene, options);
         const itemWidth = 80;
         const itemHeight = 80;
-        const pad = 5;
+        const pad = 14;
         const w = pad*3 + itemWidth*2;
         const h = pad*3 + itemHeight*2;
         var x, y;
