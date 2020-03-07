@@ -4,6 +4,7 @@ import { babySprite } from '../../assets/sprite'
 import { clickSound } from '../../assets/audio'
 import Character from '../../entities/Character'
 import { getCurrentLevel } from '../../utils/helpers'
+import { CONFIG } from '../../utils/config'
 import Card from '../../entities/Card'
 import Board from '../../entities/Board'
 import imgItems from '../../assets/items.png'
@@ -54,15 +55,22 @@ class Level1 extends Phaser.Scene {
 	}
 
   createBoardAndCards(data) {
-    var snap = {
-      rect: new Phaser.Geom.Rectangle(630, 230, 6*80+5*12, 6*80+5*12),
-      itemWidth: 92,
-      itemHeight: 92
-    }
     let board = new Board(this, { x: 630, y: 230});
     this.cards = [];
+    var itemW = 80 + board.pad;
+    var itemH = 80 + board.pad;
+    var snap = {
+      rect: new Phaser.Geom.Rectangle(630, 230, CONFIG.gridSize.x*itemW, CONFIG.gridSize.y*itemH),
+      itemWidth: itemW,
+      itemHeight: itemH
+    }
+    var maps = [
+      [[1, 0], [0,1]],
+      [[1, 1], [0,1]],
+      [[0, 0], [0,1]],
+    ];
     for (var i = 0; i < 3; i++) {
-      this.cards[i] = new Card(this, { x: 1090, y: 60+i*200, map: [[1,0],[0,1]], snap: snap});
+      this.cards[i] = new Card(this, { x: 1090, y: 60+i*200, map: maps[i], snap: snap});
     }
 	}
 
