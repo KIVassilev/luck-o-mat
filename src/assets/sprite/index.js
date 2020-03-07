@@ -1,4 +1,5 @@
 import button from './buttons.png'
+import bigButton from './bigbutton.png'
 import char0Sprite from './char-0.png'
 import char1Sprite from './char-1.png'
 import char2Sprite from './char-2.png'
@@ -8,5 +9,6 @@ import char5Sprite from './char-5.png'
 
 export const SPRITE = {
     button: button,
+    bigButton: bigButton,
     chars: [char0Sprite, char1Sprite, char2Sprite, char3Sprite, char4Sprite, char5Sprite]
 }

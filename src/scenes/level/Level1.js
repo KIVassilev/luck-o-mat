@@ -1,6 +1,7 @@
 import loader from '../../utils/loader'
 import machineImg from '../../assets/machine.png'
 import { SPRITE } from '../../assets/sprite'
+import Button from '../../entities/Button'
 import { clickSound } from '../../assets/audio'
 import Character from '../../entities/Character'
 import { getLevel } from '../../utils/helpers'
@@ -19,7 +20,9 @@ class Level1 extends Phaser.Scene {
         this.level = getLevel()
     }
 
-    init(data) { }
+    init(data) {
+
+    }
 
     preload() {
         loader(this)
@@ -28,6 +31,7 @@ class Level1 extends Phaser.Scene {
         this.load.image('items', imgItems)
         this.load.spritesheet('hand', imgHand, { frameWidth: 166, frameHeight: 100 });
         this.load.image('rope', imgRope);
+        this.load.spritesheet('bigbutton', SPRITE.bigButton, { frameWidth: 1120/4, frameHeight: 95 });
         this.load.image('items', imgItems)
         // Characters 
         for (let i = 0; i < 6; i++) {
@@ -52,7 +56,7 @@ class Level1 extends Phaser.Scene {
         this.createBoardAndCards(data)
     }
 
-    createBoardAndCards(data) {
+    createBoardAndCards() {
         this.basket = 0;
         this.baskets = [ { x: 100, y: 600 }, { x: 300, y: 600}, { x:500, y: 600}];
         this.board = new Board(this, { x: 630, y: 230 })
@@ -103,6 +107,25 @@ class Level1 extends Phaser.Scene {
         }, this);
 
         this.hint = this.add.text(80, 645, 'DRAG THE CARDS ON THE RIGHT', { font: '22px Arial', color: '#fff', stroke: '#000', strokeThickness: 4});
+
+        const newButton = new Button({
+            scene: this,
+            key: 'bigbutton',
+            x: 1180,
+            y: 680
+        })
+
+        newButton.scale = 0.6;
+
+        newButton.on('pointerup', this.onNewGame.bind(this));
+    }
+
+    onNewGame() {
+        this.events.off('pickBoardPos');
+        this.events.off('sct');
+        this.events.off('cardOver');
+        this.scene.shutdown();
+        this.scene.restart();
     }
 
     sct(x, y, text) {
