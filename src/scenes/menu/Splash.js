@@ -36,7 +36,7 @@ class SplashScreen extends Phaser.Scene {
 			this.scene.switch('Level1')
 		}, this)
 
-    let card = new Card(this, { x: 500, y: 10});
+    let card = new Card(this, { x: 500, y: 10, map: [[1,0],[0,1]]});
 
 		this.tweens.add({
 			targets: logo,
@@ -52,7 +52,7 @@ class SplashScreen extends Phaser.Scene {
     let board = new Board(this, { x: 500, y: 200});
     this.cards = [];
     for (var i = 0; i < 3; i++) {
-      this.cards[i] = new Card(this, { x: 1000, y: 100+i*200});
+      this.cards[i] = new Card(this, { x: 1000, y: 100+i*200, map: [[1,0],[0,1]]});
     }
 	}
 
