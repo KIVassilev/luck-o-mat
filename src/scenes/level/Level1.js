@@ -20,7 +20,8 @@ class Level1 extends Phaser.Scene {
     }
 
     init(data) {
-
+        this.scene.launch('Hud')
+        this.scene.bringToTop('Hud')
     }
 
     preload() {
@@ -42,8 +43,6 @@ class Level1 extends Phaser.Scene {
     create(data) {
         console.log(this.level)
         
-        this.scene.launch('Hud')
-        this.scene.bringToTop('Hud')
 
         this.add.sprite(0, 0, 'background').setOrigin(0, 0)
         this.add.sprite(0, 0, 'machine').setOrigin(0, 0)
@@ -122,6 +121,7 @@ class Level1 extends Phaser.Scene {
         this.events.off('pickBoardPos');
         this.events.off('sct');
         this.events.off('cardOver');
+        this.scene.stop('Hud')
         this.scene.shutdown();
         this.scene.restart();
     }
