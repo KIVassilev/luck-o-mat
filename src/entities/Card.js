@@ -71,10 +71,6 @@ class Card extends Phaser.GameObjects.Graphics {
     }
 
     rollSpot() {
-        // const board = this.scene.board
-        // console.log(board.items)
-        console.log(this.snap.pt)
-        console.log(this.map)
         let slots = []
         
         for (let y = 0; y < this.map.length; y++) {
@@ -84,7 +80,6 @@ class Card extends Phaser.GameObjects.Graphics {
         }
 
         let slot = shuffleArray(slots)[0]
-        console.log(slot)
 
         if (slot) {
             this.scene.events.emit('pickBoardPos', this.snap.pt.x + slot.x, this.snap.pt.y + slot.y);
