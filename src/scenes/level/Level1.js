@@ -3,7 +3,7 @@ import backgroundImg from '../../assets/background.jpg'
 import { babySprite } from '../../assets/sprite'
 import { clickSound } from '../../assets/audio'
 import Character from '../../entities/Character'
-import { generateRandomLevel } from '../../utils/helpers'
+import { getCurrentLevel } from '../../utils/helpers'
 
 class Level1 extends Phaser.Scene {
 	constructor() {
@@ -22,7 +22,9 @@ class Level1 extends Phaser.Scene {
 	}
 
 	create(data) {
-		console.log(generateRandomLevel(1))
+		const level = getCurrentLevel()
+		console.log(level)
+		
 		this.scene.launch('Hud')
 		this.scene.bringToTop('Hud')
 
