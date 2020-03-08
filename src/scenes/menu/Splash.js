@@ -2,7 +2,7 @@ import loader from '../../utils/loader'
 import Button from '../../entities/Button'
 import bgImg from '../../assets/bg.png'
 import { SPRITE } from '../../assets/sprite'
-import { clickSound } from '../../assets/audio'
+import { clickSound, music } from '../../assets/audio'
 import Character from '../../entities/Character'
 
 class SplashScreen extends Phaser.Scene {
@@ -13,11 +13,12 @@ class SplashScreen extends Phaser.Scene {
     init(data) { }
 
     preload() {
-        loader(this)
+        loader(this) 
 
         this.load.spritesheet('bigbutton', SPRITE.bigButton, { frameWidth: 1120/4, frameHeight: 95 });
         this.load.image('background', bgImg)
         this.load.audio('click', clickSound)
+        this.load.audio('music', music)
         this.load.spritesheet('char-1', SPRITE.chars[1], { frameWidth: 215, frameHeight: 390 })
         this.load.spritesheet('char-2', SPRITE.chars[2], { frameWidth: 215, frameHeight: 390 })
         this.load.spritesheet('char-4', SPRITE.chars[4], { frameWidth: 215, frameHeight: 390 })
@@ -38,6 +39,11 @@ class SplashScreen extends Phaser.Scene {
             clickSound.play()
             this.scene.switch('Level1')
         }, this)
+
+        const music = this.sound.add('music', {
+            loop: true
+        })
+        music.play()
 
         const Char = new Character({
             scene: this,
