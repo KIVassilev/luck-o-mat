@@ -49,7 +49,7 @@ class SplashScreen extends Phaser.Scene {
             scene: this,
             key: 'char-1',
             x: 950,
-            y: 200,
+            y: 250,
             id: 1,
             frame: 1
         })
@@ -58,7 +58,7 @@ class SplashScreen extends Phaser.Scene {
             scene: this,
             key: 'char-2',
             x: 250,
-            y: 200,
+            y: 250,
             id: 1,
             frame: 1
         })
@@ -67,7 +67,7 @@ class SplashScreen extends Phaser.Scene {
             scene: this,
             key: 'char-4',
             x: 550,
-            y: 200,
+            y: 250,
             id: 1,
             frame: 1
         })
