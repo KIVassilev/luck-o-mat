@@ -130,12 +130,12 @@ class Level1 extends Phaser.Scene {
     }
 
     sct(x, y, text) {
-        var text = this.add.text(x, y, text, { font: '64px Comic Sans MS', color: '#fff', stroke: '#000', strokeThickness: 4});
+        var text = this.add.text(x, y, text, { font: '48px Comic Sans MS', color: '#fff', stroke: '#000', strokeThickness: 4});
         text.setOrigin(0.5);
         this.tweens.add({
             targets: text,
             y: 0,
-            duration: 1000,
+            duration: 3000,
             ease: 'Linear',
             onComplete: () => { text.destroy()}
         });
@@ -163,7 +163,8 @@ class Level1 extends Phaser.Scene {
               targets: Char,
               scale: scale,
               ease: 'Bounce',
-              duration: 500 + Math.random()*3000,
+              delay: i*1500,
+              duration: 1500,// + Math.random()*3000,
               onComplete: (tween) => { let t = tween.targets[0]; this.sct(t.x, t.y, t.profile.talk.hi); }
             });
             // Char.on('pointerup', function() {
