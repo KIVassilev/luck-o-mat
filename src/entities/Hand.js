@@ -1,4 +1,5 @@
-import { CONFIG } from '../utils/config'
+import { shuffleArray } from '../utils/helpers'
+import Item from './Item'
 
 class Hand extends Phaser.GameObjects.Container {
     constructor(scene, options) {
@@ -36,7 +37,7 @@ class Hand extends Phaser.GameObjects.Container {
         });
     }
 
-    pickBoardPos(x, y, item, dropPos) {
+    pickBoardPos(x, y, item, dropPos, boardX, boardY) {
         this.dropPos = dropPos;
         this.item = item;
         this.hand.setFrame(1);
@@ -46,7 +47,7 @@ class Hand extends Phaser.GameObjects.Container {
             y: y,
             duration: 1000,
             ease: 'Expo',
-            onComplete: this.onPick.bind(this)
+            onComplete: this.onPick.bind(this, x, y, item, boardX, boardY)
         });
     }
 
@@ -63,9 +64,20 @@ class Hand extends Phaser.GameObjects.Container {
         }
     }
 
-    onPick(tween) {
+    onPick(x, y, item, boardX, boardY) {
         this.dropOver();
         this.hand.setFrame(2);
+        setTimeout(() => {
+            let possibleItems = [12, 14]
+            let newItem = new Item({
+                scene: this.scene,
+                key: 'items',
+                x: x,
+                y: y,
+                id: shuffleArray(possibleItems)[0]
+            })
+            this.scene.board.items[boardX][boardY] = newItem;
+        }, 600)
     }
 }
 

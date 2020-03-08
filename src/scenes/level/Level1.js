@@ -54,7 +54,7 @@ class Level1 extends Phaser.Scene {
 
     createBoardAndCards() {
         this.basket = 0;
-        this.baskets = [ { x: 100, y: 600 }, { x: 300, y: 600}, { x:500, y: 600}];
+        this.baskets = [{ x: 100, y: 600 }, { x: 280, y: 600 }, { x: 480, y: 600 }];
         this.board = new Board(this, { x: 630, y: 230 })
         this.cards = []
         var itemW = CONFIG.item.width + this.board.padding;
@@ -79,14 +79,14 @@ class Level1 extends Phaser.Scene {
           this.hand.positionOver(this.board.x + pt.x*itemW);
         }, this);
         this.events.on('sct', this.sct.bind(this));
-        this.events.on('pickBoardPos', (x, y, item) => {
+        this.events.on('pickBoardPos', (x, y) => {
           var i = this.board.items[y][x];
           this.baskets[this.basket].item = i;
           this.board.items[y][x] = null;
           if (i) {
-            this.hand.pickBoardPos(i.x, i.y, i, this.baskets[this.basket]);
+            this.hand.pickBoardPos(i.x, i.y, i, this.baskets[this.basket], x, y);
           } else {
-            this.hand.pickBoardPos(this.board.x+x*itemW, this.board.y + y*itemH, null, this.baskets[this.basket]);
+            this.hand.pickBoardPos(this.board.x+x*itemW, this.board.y + y*itemH, null, this.baskets[this.basket], x, y);
           }
           this.basket++;
           if (this.basket == this.baskets.length) {
@@ -102,7 +102,7 @@ class Level1 extends Phaser.Scene {
           }
         }, this);
 
-        this.hint = this.add.text(70, 650, 'DRAG THE CARDS ON THE RIGHT', { font: '22px Arial', color: '#fff', stroke: '#000', strokeThickness: 4});
+        this.hint = this.add.text(70, 653, 'DRAG THE CARDS ON THE RIGHT', { font: '22px Arial', color: '#fff', stroke: '#000', strokeThickness: 4});
 
         const newButton = new Button({
             scene: this,
