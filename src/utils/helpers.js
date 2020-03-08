@@ -117,7 +117,7 @@ export function getLevel(index) {
     // If we cannot find pre generated level... generate one
     if (!level) level = generateRandomLevel()
     if (!level.cards) level.cards = generateCards(CONFIG.cardsCount, CONFIG.cardSize.x, CONFIG.cardSize.y)
-    level.generate = () => { level.board = generateBoard(CONFIG.boardSize.x, CONFIG.boardSize.y); level.cards = generateCards(CONFIG.cardsCount, CONFIG.cardSize.x, CONFIG.cardSize.y); }
+    level.generate = () => { level.cards = generateCards(CONFIG.cardsCount, CONFIG.cardSize.x, CONFIG.cardSize.y); }
 
     return level
 }
