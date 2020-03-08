@@ -74,18 +74,14 @@ class Hand extends Phaser.GameObjects.Container {
         this.dropOver();
         this.hand.setFrame(2);
         let possibleItems = [12, 14]
-            let newItem = new Item({
-                scene: this.scene,
-                key: 'items',
-                x: -999,
-                y: -999,
-                id: shuffleArray(possibleItems)[0]
-            })
-            this.scene.board.items[boardX][boardY] = newItem;
-        setTimeout(() => {
-            newItem.x = x
-            newItem.y = y
-        }, 600)
+        let newItem = new Item({
+            scene: this.scene,
+            key: 'items',
+            x: x,
+            y: y,
+            id: shuffleArray(possibleItems)[0]
+        })
+        this.scene.board.items[boardY][boardX] = newItem;
     }
 }
 
