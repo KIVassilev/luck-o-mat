@@ -28,7 +28,7 @@ export const CONFIG = Object.freeze({
                 [0, 1, 0, 0, 1],
                 [0, 1, 0, 1, 0]
             ],
-            chars: [0,1,2]
+            chars: [0]
         },
         {
             id: 1,
