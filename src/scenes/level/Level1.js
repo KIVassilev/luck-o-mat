@@ -154,9 +154,9 @@ class Level1 extends Phaser.Scene {
                 key: `char-${charId}`,
                 x: (charSizeX * i) + offsetX + blob,
                 y: 50,
-                id: charId
+                id: charId,
+                scale: scale
             })
-            Char.scale = scale
             // Char.on('pointerup', function() {
             //     charSound.play()
             // }, this)

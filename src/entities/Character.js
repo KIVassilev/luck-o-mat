@@ -7,6 +7,10 @@ class Character extends Phaser.GameObjects.Sprite {
         this.x = config.x
         this.y = config.y
         this.profile = CONFIG.chars.find(char => char.id === config.id)
+        if (config.scale) {
+            this.anchorScale = config.scale
+            this.scale = config.scale
+        }
 
         this.setOrigin(0, 0)
 
