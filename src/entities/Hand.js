@@ -14,6 +14,8 @@ class Hand extends Phaser.GameObjects.Container {
     }
 
     positionOver(x) {
+        if (this.scene.handMoving)
+          return;
         this.hand.setFrame(0);
         this.scene.tweens.add({
             targets: this,
@@ -37,6 +39,7 @@ class Hand extends Phaser.GameObjects.Container {
     }
 
     pickBoardPos(x, y, item, dropPos) {
+        this.scene.handMoving = true;
         this.dropPos = dropPos;
         this.item = item;
         this.hand.setFrame(1);
@@ -52,6 +55,7 @@ class Hand extends Phaser.GameObjects.Container {
 
     onDrop(tween) {
         this.hand.setFrame(0);
+        this.scene.handMoving = false;
         if (this.item) {
             this.scene.tweens.add({
                 targets: this.item,

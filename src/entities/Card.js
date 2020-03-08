@@ -60,7 +60,7 @@ class Card extends Phaser.GameObjects.Graphics {
         });
         this.on('dragend', function (pointer, dragX, dragY) {
             this.scale = 0.8;
-            if (this.snap.pt) {
+            if (this.snap.pt && !scene.handMoving) {
                 this.rollSpot();
             } else {
                 this.x = this.anchorX;
