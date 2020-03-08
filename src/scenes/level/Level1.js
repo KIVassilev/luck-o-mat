@@ -54,7 +54,7 @@ class Level1 extends Phaser.Scene {
 
     createBoardAndCards() {
         this.basket = 0;
-        this.baskets = [{ x: 100, y: 600 }, { x: 280, y: 600 }, { x: 480, y: 600 }];
+        this.baskets = [{ x: 100, y: 595 }, { x: 280, y: 600 }, { x: 480, y: 600 }];
         this.board = new Board(this, { x: 630, y: 230 })
         this.cards = []
         var itemW = CONFIG.item.width + this.board.padding;
@@ -96,9 +96,9 @@ class Level1 extends Phaser.Scene {
                 item.anchorY = item.y
                 this.input.setDraggable(item);
             }
-            this.hint.setText('GIVE THE ITEMS TO THE CHARS');
+            this.hint.setText('GIVE THE ITEMS TO YOUR BUDDIES');
           } else {
-            this.hint.setText('COLLECT THREE ITEMS');
+            this.hint.setText('COLLECT 3 ITEMS');
           }
         }, this);
 
