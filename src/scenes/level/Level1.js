@@ -118,6 +118,7 @@ class Level1 extends Phaser.Scene {
     }
 
     onNewGame() {
+        this.level.generate();
         this.events.off('pickBoardPos');
         this.events.off('sct');
         this.events.off('cardOver');

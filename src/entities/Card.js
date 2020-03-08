@@ -19,7 +19,7 @@ class Card extends Phaser.GameObjects.Graphics {
             this.fillRect(x * (pad + itemWidth), 0, pad, h);
         }
         if (options.map) {
-            this.fillStyle(0xff0000, 0.6);
+            this.fillStyle(0x440000, 0.6);
             for (x = 0; x < 2; x++) {
                 for (y = 0; y < 2; y++) {
                     if (options.map[y][x]) {
