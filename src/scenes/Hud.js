@@ -18,7 +18,7 @@ class Hud extends Phaser.Scene {
             this.score += points
             let stars = []
             let starsTxt = ''
-            stars.length = Math.floor(this.score / 150)
+            stars.length = this.score > 0 ? Math.floor(this.score / 150) : 0
             console.log(this.score)
             for (let s = 0; s < stars.length; s++) {
                 starsTxt += '* '

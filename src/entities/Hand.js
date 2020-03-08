@@ -11,6 +11,7 @@ class Hand extends Phaser.GameObjects.Container {
         this.rope.setOrigin(0.5,1);
         this.add(this.hand);
         this.add(this.rope);
+        this.depth = 99
         scene.add.existing(this);
     }
 
@@ -72,16 +73,18 @@ class Hand extends Phaser.GameObjects.Container {
     onPick(x, y, item, boardX, boardY) {
         this.dropOver();
         this.hand.setFrame(2);
-        setTimeout(() => {
-            let possibleItems = [12, 14]
+        let possibleItems = [12, 14]
             let newItem = new Item({
                 scene: this.scene,
                 key: 'items',
-                x: x,
-                y: y,
+                x: -999,
+                y: -999,
                 id: shuffleArray(possibleItems)[0]
             })
             this.scene.board.items[boardX][boardY] = newItem;
+        setTimeout(() => {
+            newItem.x = x
+            newItem.y = y
         }, 600)
     }
 }
