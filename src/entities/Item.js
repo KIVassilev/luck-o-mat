@@ -58,6 +58,7 @@ class Item extends Phaser.GameObjects.Sprite {
 
         if (char) {
             char.getItem(this)
+            char.scale = char.anchorScale
         } else {
             this.x = this.anchorX;
             this.y = this.anchorY;
