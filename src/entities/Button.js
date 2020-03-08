@@ -13,6 +13,10 @@ class Button extends Phaser.GameObjects.Sprite {
         this.on('pointerout', this.onUp, this)
 
         config.scene.add.existing(this)
+        if (config.text) {
+            var t = config.scene.add.text(this.x, this.y, config.text, { font: 'bold 32px Arial', color: '#ff0', stroke: '#000', strokeThickness: 4});
+            t.setOrigin(0.5);
+        }
     }
 
     onDown() {

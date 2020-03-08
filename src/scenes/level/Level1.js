@@ -107,6 +107,7 @@ class Level1 extends Phaser.Scene {
         const newButton = new Button({
             scene: this,
             key: 'bigbutton',
+            text: 'NEW',
             x: 1180,
             y: 680
         })

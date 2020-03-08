@@ -15,7 +15,7 @@ class SplashScreen extends Phaser.Scene {
     preload() {
         loader(this)
 
-        this.load.spritesheet('button', SPRITE.button, { frameWidth: 193, frameHeight: 71 })
+        this.load.spritesheet('bigbutton', SPRITE.bigButton, { frameWidth: 1120/4, frameHeight: 95 });
         this.load.image('background', bgImg)
         this.load.audio('click', clickSound)
         this.load.spritesheet('char-1', SPRITE.chars[1], { frameWidth: 215, frameHeight: 390 })
@@ -26,9 +26,10 @@ class SplashScreen extends Phaser.Scene {
         const clickSound = this.sound.add('click')
         const playButton = new Button({
             scene: this,
-            key: 'button',
+            key: 'bigbutton',
+            text: 'PLAY',
             x: 540,
-            y: 180
+            y: 580
         })
 
         playButton.on('pointerup', function () {
