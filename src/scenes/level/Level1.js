@@ -41,6 +41,7 @@ class Level1 extends Phaser.Scene {
     }
 
     create(data) {
+        this.events.on('sct', this.sct.bind(this));
         console.log(this.level)
 
         this.add.sprite(0, 0, 'background').setOrigin(0, 0)
@@ -78,7 +79,6 @@ class Level1 extends Phaser.Scene {
         this.events.on('cardOver', (pt) => {
           this.hand.positionOver(this.board.x + pt.x*itemW);
         }, this);
-        this.events.on('sct', this.sct.bind(this));
         this.events.on('pickBoardPos', (x, y) => {
           var i = this.board.items[y][x];
           this.baskets[this.basket].item = i;

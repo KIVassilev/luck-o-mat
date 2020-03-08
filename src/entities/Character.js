@@ -13,6 +13,7 @@ class Character extends Phaser.GameObjects.Sprite {
         this.setInteractive()
 
         config.scene.add.existing(this)
+        config.scene.events.emit('sct', this.x, this.y + this.height, this.profile.talk.hi);
     }
 
     getItem(item) {
