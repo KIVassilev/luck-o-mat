@@ -14,14 +14,21 @@ class Board extends Phaser.GameObjects.Container {
         // Y
         for (let y = 0; y < scene.level.board.length; y++) {
             this.items[y] = [];
+            var itemY = this.y + (y * (itemHeight + this.padding));
             for (var x = 0; x < scene.level.board[y].length; x++) {
                 const newItem = new Item({
                     scene: scene,
                     key: 'items',
                     x: this.x + (x * (itemWidth + this.padding)),
-                    y: this.y + (y * (itemHeight + this.padding)),
+                    y: 0,
                     id: scene.level.board[y][x]
                 })
+                scene.tweens.add({
+                  targets: newItem,
+                  y: itemY,
+                  ease: 'bounce',
+                  duration: 500+Math.random()*1000
+                });
                 this.items[y][x] = newItem;
             }
         }
