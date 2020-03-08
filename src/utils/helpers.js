@@ -63,6 +63,7 @@ function generateCards(count, sizeX, sizeY) {
     // Total cards
     for (let i = 0; i < count; i++) {
         let card = []
+        let blocks = 0;
 
         // Y
         for (let y = 0; y < sizeX; y++) {
@@ -71,7 +72,12 @@ function generateCards(count, sizeX, sizeY) {
             // X
             for (let x = 0; x < sizeY; x++) {
                 // TODO: make it not random xD
-                rows.push(getRandomInt(0, 1))
+                var r = getRandomInt(0, 1);
+                if (r)
+                  blocks++;
+                if (blocks == 4)
+                  r = 0;
+                rows.push(r)
             }
 
             card.push(rows)
