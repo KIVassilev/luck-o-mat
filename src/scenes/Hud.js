@@ -5,7 +5,9 @@ class Hud extends Phaser.Scene {
         this.score = 0
     }
 
-    init(data) { }
+    init(data) {
+        this.score = 0
+    }
 
     preload() { }
 
