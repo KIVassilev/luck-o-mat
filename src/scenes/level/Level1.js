@@ -131,6 +131,7 @@ class Level1 extends Phaser.Scene {
 
     sct(x, y, text) {
         var text = this.add.text(x, y, text, { font: '64px Comic Sans MS', color: '#fff', stroke: '#000', strokeThickness: 4});
+        text.setOrigin(0.5);
         this.tweens.add({
             targets: text,
             y: 0,
@@ -146,7 +147,7 @@ class Level1 extends Phaser.Scene {
         this.level.chars.forEach((charId, i) => {
             const charSizeX = 180
             // const charSound = this.sound.add(`char-${charId}-happy`)
-            let offsetX = 170 - (56.66 * this.level.chars.length)
+            let offsetX = 280 - (56.66 * this.level.chars.length)
             offsetX = this.level.chars.length === 1 ? 170 : offsetX
             let blob = i === 1 && this.level.chars.length === 2 ? 80 : 0
             let scale = 1.36 - (this.level.chars.length * 0.12)
@@ -154,10 +155,17 @@ class Level1 extends Phaser.Scene {
                 scene: this,
                 key: `char-${charId}`,
                 x: (charSizeX * i) + offsetX + blob,
-                y: 50,
+                y: 230,
                 id: charId,
-                scale: scale
             })
+            Char.scale = 0;
+            this.tweens.add({
+              targets: Char,
+              scale: scale,
+              ease: 'Bounce',
+              duration: 500 + Math.random()*3000,
+              onComplete: (tween) => { let t = tween.targets[0]; this.sct(t.x, t.y, t.profile.talk.hi); }
+            });
             // Char.on('pointerup', function() {
             //     charSound.play()
             // }, this)

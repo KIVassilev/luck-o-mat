@@ -48,8 +48,8 @@ class SplashScreen extends Phaser.Scene {
         const Char = new Character({
             scene: this,
             key: 'char-1',
-            x: 850,
-            y: 80,
+            x: 950,
+            y: 200,
             id: 1,
             frame: 1
         })
@@ -57,8 +57,8 @@ class SplashScreen extends Phaser.Scene {
         new Character({
             scene: this,
             key: 'char-2',
-            x: 150,
-            y: 80,
+            x: 250,
+            y: 200,
             id: 1,
             frame: 1
         })
@@ -66,8 +66,8 @@ class SplashScreen extends Phaser.Scene {
         new Character({
             scene: this,
             key: 'char-4',
-            x: 450,
-            y: 80,
+            x: 550,
+            y: 200,
             id: 1,
             frame: 1
         })

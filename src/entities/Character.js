@@ -12,12 +12,11 @@ class Character extends Phaser.GameObjects.Sprite {
             this.scale = config.scale
         }
 
-        this.setOrigin(0, 0)
+        this.setOrigin(0.5)
 
         this.setInteractive()
 
         config.scene.add.existing(this)
-        config.scene.events.emit('sct', this.x, this.y + this.height, this.profile.talk.hi);
     }
 
     getItem(item) {
