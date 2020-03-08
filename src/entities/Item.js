@@ -15,12 +15,33 @@ class Item extends Phaser.GameObjects.Sprite {
 
         this.scale = 2/3
 
+        // config.scene.input.setDraggable(this);
+
         config.scene.add.existing(this)
     }
 
     drag(pointer, x, y) {
         this.x = x;
         this.y = y;
+
+        const chars = this.scene.chars
+        let char = false
+
+        for (let i = 0; i < chars.length; i++) {
+            chars[i].scale = chars[i].anchorScale 
+            let bounds = chars[i].getBounds()
+            if (bounds.contains(pointer.x, pointer.y)) {
+                char = chars[i]
+                break
+            }
+        }
+
+        if (char) {
+            for (let i = 0; i < chars.length; i++) {
+                chars[i].scale = chars[i].anchorScale 
+            }
+            char.scale = char.anchorScale * 1.10
+        }
     }
 
     dragEnd(pointer, x, y) {

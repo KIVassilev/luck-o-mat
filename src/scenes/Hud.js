@@ -21,7 +21,7 @@ class Hud extends Phaser.Scene {
             stars.length = this.score > 0 ? Math.floor(this.score / 150) : 0
             console.log(this.score)
             for (let s = 0; s < stars.length; s++) {
-                starsTxt += '* '
+                starsTxt += '🌟 '
             }
 
             score.setText(starsTxt)

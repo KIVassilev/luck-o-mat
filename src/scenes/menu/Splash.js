@@ -19,6 +19,8 @@ class SplashScreen extends Phaser.Scene {
         this.load.image('background', bgImg)
         this.load.audio('click', clickSound)
         this.load.spritesheet('char-1', SPRITE.chars[1], { frameWidth: 215, frameHeight: 390 })
+        this.load.spritesheet('char-2', SPRITE.chars[2], { frameWidth: 215, frameHeight: 390 })
+        this.load.spritesheet('char-4', SPRITE.chars[4], { frameWidth: 215, frameHeight: 390 })
     }
 
     create(data) {
@@ -28,7 +30,7 @@ class SplashScreen extends Phaser.Scene {
             scene: this,
             key: 'bigbutton',
             text: 'PLAY',
-            x: 540,
+            x: 600,
             y: 580
         })
 
@@ -46,14 +48,32 @@ class SplashScreen extends Phaser.Scene {
             frame: 1
         })
 
-        this.tweens.add({
-            targets: Char,
-            scale: 1.2,
-            duration: 700,
-            ease: 'Power2',
-            yoyo: true,
-            loop: -1
+        new Character({
+            scene: this,
+            key: 'char-2',
+            x: 150,
+            y: 80,
+            id: 1,
+            frame: 1
         })
+
+        new Character({
+            scene: this,
+            key: 'char-4',
+            x: 450,
+            y: 80,
+            id: 1,
+            frame: 1
+        })
+
+        // this.tweens.add({
+        //     targets: Char,
+        //     scale: 1.2,
+        //     duration: 700,
+        //     ease: 'Power2',
+        //     yoyo: true,
+        //     loop: -1
+        // })
   }
 
     update(time, delta) { }
