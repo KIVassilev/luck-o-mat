@@ -64,7 +64,7 @@ class Hand extends Phaser.GameObjects.Container {
                 y: this.dropPos.y,
                 scale: 0.8,
                 duration: 800,
-                ease: 'Expo'
+                ease: 'Bounce'
             });
         }
     }
