@@ -107,7 +107,7 @@ class Level1 extends Phaser.Scene {
         const newButton = new Button({
             scene: this,
             key: 'bigbutton',
-            text: 'NEW',
+            text: 'NEXT',
             x: 1180,
             y: 680
         })
@@ -118,6 +118,7 @@ class Level1 extends Phaser.Scene {
     }
 
     onNewGame() {
+        this.level = getLevel(this.level.id+1)
         this.scene.handMoving = false;
         this.level.generate();
         this.events.off('pickBoardPos');

@@ -30,9 +30,14 @@ export function shuffleArray (array) {
 
 function generateCharacters(count) {
     let chars = []
+    var generated = [false, false, false, false, false, false], r;
 
     for (let i = 0; i < count; i++) {
-        chars.push(i)
+        do {
+          r = getRandomInt(0, CONFIG.charsCount);
+        } while (generated[r])
+        generated[r] = true;
+        chars.push(r)
     }
 
     return chars
@@ -102,8 +107,12 @@ function generateRandomLevel() {
 }
 
 export function getLevel(index) {
-    const levelIndex = index ? index : parseInt(localStorage.getItem('level-index'))
-    let level = levelIndex >= 0 ? CONFIG.levels[levelIndex] : CONFIG.levels[0]
+    let levelIndex = index ? index : parseInt(localStorage.getItem('level-index'))
+    let level = null;
+    if (typeof(index) === 'undefined')
+      levelIndex = 0;
+    if (0 <= levelIndex && levelIndex < CONFIG.levels.length)
+      level = CONFIG.levels[levelIndex]
 
     // If we cannot find pre generated level... generate one
     if (!level) level = generateRandomLevel()
