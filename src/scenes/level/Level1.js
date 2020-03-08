@@ -156,6 +156,7 @@ class Level1 extends Phaser.Scene {
                 key: `char-${charId}`,
                 x: (charSizeX * i) + offsetX + blob,
                 y: 230,
+                scale: scale,
                 id: charId,
             })
             Char.scale = 0;
