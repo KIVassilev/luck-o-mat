@@ -100,7 +100,7 @@ export const CONFIG = Object.freeze({
                 { id: 14, pt: -300 },
                 { id: 13, pt: 500 }
             ], 
-            talk: { hi: "ET phone home", win: "Happy-happy!", lose: "Bad human!!!" } 
+            talk: { hi: "Hello", win: "That is great", lose: "You suck" } 
         },
         { 
             id: 1, 
@@ -115,7 +115,7 @@ export const CONFIG = Object.freeze({
                 { id: 14, pt: -300 },
                 { id: 13, pt: 500 }
             ], 
-            talk: { hi: "Hello world", win: "Mission accomplished!", lose: "ERROR 404!" } 
+            talk: { hi: "Hello", win: "That is great", lose: "You suck" } 
         },
         { 
             id: 2, 
@@ -130,7 +130,7 @@ export const CONFIG = Object.freeze({
                 { id: 14, pt: -300 },
                 { id: 13, pt: 500 }
             ], 
-            talk: { hi: "Gimme somtin' nice", win: "Luv U", lose: "Meh...loser" } 
+            talk: { hi: "Hello", win: "That is great", lose: "You suck" } 
         },
         { 
             id: 3, 
@@ -145,7 +145,7 @@ export const CONFIG = Object.freeze({
                 { id: 14, pt: -300 },
                 { id: 13, pt: 500 }
             ], 
-            talk: { hi: "Hhhhh", win: "Niceee ninceee", lose: "Grrrrr!" } 
+            talk: { hi: "Hello", win: "That is great", lose: "You suck" } 
         },
         { 
             id: 4, 
@@ -160,7 +160,7 @@ export const CONFIG = Object.freeze({
                 { id: 14, pt: -300 },
                 { id: 13, pt: 500 }
             ], 
-            talk: { hi: "What an awlful weather", win: "ooh, not bad!", lose: "Stupid youth!" } 
+            talk: { hi: "Hello", win: "That is great", lose: "You suck" } 
         },
         { 
             id: 5, 
@@ -175,7 +175,7 @@ export const CONFIG = Object.freeze({
                 { id: 14, pt: -300 },
                 { id: 13, pt: 500 }
             ], 
-            talk: { hi: "Ho Ho Ho", win: "Oh Oh Oh", lose: "No No No" } 
+            talk: { hi: "Hello", win: "That is great", lose: "You suck" } 
         }
     ]
 })
