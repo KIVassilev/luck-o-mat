@@ -12,14 +12,14 @@ class Card extends Phaser.GameObjects.Graphics {
         this.map = options.map
         var x, y;
 
-        this.fillStyle(0x555555, 1);
+        this.fillStyle(0x58311c, 1);
         
         for (x = 0; x < 3; x++) {
             this.fillRect(0, x * (pad + itemHeight), w, pad);
             this.fillRect(x * (pad + itemWidth), 0, pad, h);
         }
         if (options.map) {
-            this.fillStyle(0x440000, 0.6);
+            this.fillStyle(0x58311c, 0.8);
             for (x = 0; x < 2; x++) {
                 for (y = 0; y < 2; y++) {
                     if (options.map[y][x]) {
