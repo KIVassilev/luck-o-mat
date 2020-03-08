@@ -39,7 +39,8 @@ class Hand extends Phaser.GameObjects.Container {
         });
     }
 
-
+    pickBoardPos(x, y, item, dropPos, boardX, boardY) {
+        this.scene.handMoving = true;
         this.dropPos = dropPos;
         this.item = item;
         this.hand.setFrame(1);
