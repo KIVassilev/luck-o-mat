@@ -78,10 +78,16 @@ class Hand extends Phaser.GameObjects.Container {
             scene: this.scene,
             key: 'items',
             x: x,
-            y: y,
+            y: 0,
             id: shuffleArray(possibleItems)[0]
         })
         this.scene.board.items[boardY][boardX] = newItem;
+        this.scene.tweens.add({
+          targets: newItem,
+          y: y,
+          ease: 'bounce',
+          duration: 500+Math.random()*1000
+        });
     }
 }
 
