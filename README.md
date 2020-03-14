@@ -2,10 +2,9 @@
 
 # [PLAY HERE](http://www.e2p.io/luck/)
 
-A Phaser 3 project template with ES6 support via [Babel 7](https://babeljs.io/) and [Webpack 4](https://webpack.js.org/)
-that includes hot-reloading for development and production-ready builds.
+A game developped by an [E2P](http://www.e2p.io) team for gamesjs.org Game Jam 2020.
+The game was created in 48 hours by a team of one game designer/sound guy/artist, one artist and two engineers.
 
-Loading images via JavaScript module `import` is also supported.
 
 ## Requirements
 
